@@ -1,5 +1,5 @@
 # Crear disccionarios, listas, funciones según se vayan necesitando
-#SIUUUUUUUUUUUUU
+
 
 # Bienvenida
 print("Bienvenido a la consulta especializada en dolores abdominales!"
