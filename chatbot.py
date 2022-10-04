@@ -14,7 +14,7 @@ ubi = input("""Indique la zona del dolor\n
 ----------------
 | mi | mm | md |
 ----------------
-| ai | am | ad |\n 
+| bi | bm | bd |\n 
 """)
       
 # A partir de aqui comprobamos en que zona es el dolor o molestia para descartar cosas
