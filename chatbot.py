@@ -11,9 +11,9 @@ x = input("Para empezar indique si usted es hombre o mujer: ").lower() # <-- lo 
 
 ubi = input("""Indique la zona del dolor\n
 | 1 | 2 | 3 |
-----------------
+-------------
 | 4 | 5 | 6 |
-----------------
+-------------
 | 7 | 8 | 9 |\n 
 """)
       
