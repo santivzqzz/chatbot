@@ -10,11 +10,11 @@ x = input("Para empezar indique si usted es hombre o mujer: ").lower() # <-- lo 
 # Preguntamos ubicación del dolor
 
 ubi = input("""Indique la zona del dolor\n
-| ai | am | ad |
+| 1 | 2 | 3 |
 ----------------
-| mi | mm | md |
+| 4 | 5 | 6 |
 ----------------
-| bi | bm | bd |\n 
+| 7 | 8 | 9 |\n 
 """)
       
 # A partir de aqui comprobamos en que zona es el dolor o molestia para descartar cosas
