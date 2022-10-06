@@ -1,8 +1,7 @@
-# Crear disccionarios, listas, funciones según se vayan necesitando
-
-
+# Crear diccionarios, listas, funciones según se vayan necesitando
+enfermedades = {"Cálculos biliares":[1,1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0]}
 # Bienvenida
-print("Bienvenido a la consulta especializada en dolores abdominales!"
+print("Bienvenido a la consulta especializada en dolores abdominales!")
       
 # Preguntamos género del paciente
 x = input("Para empezar indique si usted es hombre o mujer: ").lower() # <-- lo ponemos en minúsculas por si el usuario lo escribe mal y que no haya problemas en el programa.
