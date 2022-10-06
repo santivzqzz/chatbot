@@ -16,4 +16,10 @@ ubi = input("""Indique la zona del dolor\n
 | 7 | 8 | 9 |\n 
 """)
       
-# A partir de aqui comprobamos en que zona es el dolor o molestia para descartar cosas
+# Con esto descartamos todas las enfermedades que no son:
+newEnfermedades = enfermedades.copy()
+for enfermedad in enfermedades:
+    if ubi != str(enfermedades[enfermedad][0]):
+        del newEnfermedades[enfermedad]
+
+print(newEnfermedades)
