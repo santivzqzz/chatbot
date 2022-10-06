@@ -1,5 +1,13 @@
 # Crear diccionarios, listas, funciones según se vayan necesitando
-enfermedades = {"Cálculos biliares":[1,1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0]}
+enfermedades1 = {"Cálculos biliares":[1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0]}
+enfermedades2 = {}
+enfermedades3 = {}
+enfermedades4 = {}
+enfermedades5 = {}
+enfermedades6 = {}
+
+
+
 # Bienvenida
 print("Bienvenido a la consulta especializada en dolores abdominales!")
       
@@ -14,10 +22,4 @@ ubi = input("""Indique la zona del dolor\n
 | 7 | 8 | 9 |\n 
 """)
       
-# Con esto descartamos todas las enfermedades que no son:
-newEnfermedades = enfermedades.copy()
-for enfermedad in enfermedades:
-    if ubi != str(enfermedades[enfermedad][0]):
-        del newEnfermedades[enfermedad]
 
-print(newEnfermedades)
