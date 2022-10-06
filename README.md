@@ -1,7 +1,6 @@
 ESQUEMA
 La idea general sería hacer un árbol para que el chatbot funcione por descartes.
 
-La primera rama del árbol se divide según el paciente sea hombre o mujer ya que puede haber dolores o enfermedades que son específicas de cada género.
 
 El abdomen se divide en una "matriz 3x3" quedando 9 cuadrantes en las que en cada uno hay enfermedades, molestias, dolores específicos debido a la disposición 
 de los órganos por lo que sugiero que después de preguntar el género del paciente es preguntar en que zona tiene las molestias para descartar más cosas.
