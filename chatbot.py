@@ -55,13 +55,13 @@ print("Bienvenido a la consulta especializada en dolores abdominales!")
 
 # Preguntamos ubicación del dolor
 
-ubi = input("""Indique la zona del dolor\n
+ubi = int(input("""Indique la zona del dolor\n
 | 1 | 2 | 3 |
 -------------
 | 4 | 5 | 6 |
 -------------
 | 7 | 8 | 9 |\n 
-""")
+"""))
 enfermedades = enfermedades[ubi-1]
 
 
