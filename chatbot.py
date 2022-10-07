@@ -43,6 +43,12 @@ enfermedades_9 = {"Colitis":[1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0
                  "Hernia inguinal":[1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0]}
 
 
+
+
+enfermedades = [enfermedades_1,enfermedades_2,enfermedades_3,enfermedades_4,enfermedades_5,enfermedades_6,
+                enfermedades_7,enfermedades_8,enfermedades_9]
+
+
 # Bienvenida
 print("Bienvenido a la consulta especializada en dolores abdominales!")
       
@@ -56,5 +62,6 @@ ubi = input("""Indique la zona del dolor\n
 -------------
 | 7 | 8 | 9 |\n 
 """)
-      
+enfermedades = enfermedades[ubi-1]
+
 
