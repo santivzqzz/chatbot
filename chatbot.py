@@ -79,4 +79,4 @@ for i in enfermedades:
 os.system("cls")
 
 for i in newEnfermedades:
-    print("\n",i, newEnfermedades[i])
+    print(i, newEnfermedades[i])
