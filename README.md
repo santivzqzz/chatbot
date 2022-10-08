@@ -13,6 +13,6 @@ Detalles opcionales si conseguimos hacer que todo lo anterior y que funcione bie
 
 2.- Podemos preguntar al paciente si tiene hábitos como beber, fumar, etc. para tener mayor certeza de que tenga cierta enfermedad u otra.
 
-añadid ideas si las tenéis
+3.- Hacer que el programa muestre una imagen cuando pregunte la zona del dolor con el módulo PIL (from PIL import Image)
 
 IMPORTANTE hacer un disclaimer al principio o al final para avisar de que el bot no acierta al 100% sino que es una guía para saber que puede ser.
