@@ -1,4 +1,5 @@
 # Crear diccionarios, listas, funciones según se vayan necesitando
+import os
 enfermedades = {"Cálculos biliares1":[1,1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0],
                  "Hepatitis1":[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0],
                  "Pancreatitis1":[1,1,0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -62,6 +63,7 @@ ubications = []
 while ubi != "" or len(ubications) == 0:
     if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
         ubications.append(ubi)
+    os.system("cls")
     ubi = input("""Si le duele en otra zona, indíquelo\n
 | 1 | 2 | 3 |
 -------------
@@ -74,6 +76,7 @@ newEnfermedades = {}
 for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
+os.system("cls")
 
 for i in newEnfermedades:
-    print(i,":", newEnfermedades[i])
+    print("\n",i, newEnfermedades[i])
