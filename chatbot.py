@@ -60,9 +60,8 @@ ubi = input("""Indique la zona del dolor\n
 ubications = []
 
 while ubi != "" or len(ubications) == 0:
-    if ubi.isnumeric() and ubi not in ubications:
-        if 1 <= int(ubi) <= 9:
-            ubications.append(ubi)
+    if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
+        ubications.append(ubi)
     ubi = input("""Indique la zona del dolor\n
 | 1 | 2 | 3 |
 -------------
