@@ -21,7 +21,7 @@ sintomas = ["Dolor leve", "Dolor moderadamente intenso", "Dolor intenso",
 
 
 userSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-
+percentages = {}
 
 enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0],
                  "Hepatitis1":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0],
@@ -101,3 +101,14 @@ os.system("cls")
 
 for i in newEnfermedades:
     print(i, newEnfermedades[i])
+
+
+
+for i in newEnfermedades:
+    percentage = 0
+    for j in range(len(userSymptoms)):
+        if newEnfermedades[i][j] == userSymptoms[j]:
+            percentage += 100/len(userSymptoms)
+        percentages[i] = percentage
+
+print(percentages)
