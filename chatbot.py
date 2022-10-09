@@ -7,7 +7,19 @@ if platform.system() == "Linux":
     os.system("clear")
 elif platform.system() == "Windows":
     os.system("cls")
-    
+ 
+
+sintomas = ["Dolor", "Dolor leve", "Dolor moderadamente intenso", "Dolor intenso",
+            "Dolor insoportable","Retortijones","Dolor intermitente/colico",
+            "Dolor punzante","Quemazón","Dolor vago","Dolor _Comer","Hambre",
+            "Distensión","Náuseas","Vómitos","Malestar estomacal","Sudoración",
+            "Taquicardia","Sangre-Orina","Ardor-Orina","Dolor-Orinar",
+            "Sensación imperiosa de orinar","Sagre-Heces","Dolor-Evacuación",
+            "Evacuación incompleta","Diarrea","Diarrea-Sangre",
+            "Protuberancia-Indolora-Ingle-Escroto","Fiebre,Ictericia",
+            "Estreñimiento","Pérdida de peso","Cansancio","Saciedad"]
+
+
 enfermedades = {"Cálculos biliares1":[1,1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0],
                  "Hepatitis1":[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0],
                  "Pancreatitis1":[1,1,0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
