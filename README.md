@@ -7,6 +7,13 @@ de los órganos por lo que sugiero que después de preguntar el género del paci
 
 Para esto podemos hacer diccionarios según cuadrantes en los que incluyan las enfermedades con sus síntomas
 
+
+
+Necesitamos 2 partes más:
+  Preguntar al usuario por sus síntomas y cambiar los zeros por unos cuando los tenga en la lista UserSymptoms
+  
+  Calcular la enfermedad más probable
+
 Detalles opcionales si conseguimos hacer que todo lo anterior y que funcione bien y nos sobra tiempo:
 
 1.- Podemos hacer un rango de edades para descartar aún más enfermedades.
