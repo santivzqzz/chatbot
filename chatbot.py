@@ -2,14 +2,23 @@ import os
 import platform
 
 #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
-print(platform.system())
 if platform.system() == "Linux":
     os.system("clear")
 elif platform.system() == "Windows":
     os.system("cls")
  
 
-sintomas = ["Dolor leve", "Dolor moderadamente intenso", "Dolor intenso",
+sintomas = [["dolor","leve"], ["dolor","moderadamente","intenso"], ["dolor","intenso"],
+            ["dolor","insoportable"],["retortijones"],["dolor","intermitente","colico"],
+            ["dolor","punzante"],["quemazón"],["dolor","vago"],["dolor","comer"],["hambre"],
+            ["distensión"],["náuseas"],["vómitos"],["malestar","estomacal"],["sudoración"],
+            ["taquicardia"],["sangre","orina"],["ardor","orina"],["dolor","orina"],
+            ["sensación","imperiosa","orinar"],["sagre","heces"],["dolor","evacuación"],
+            ["evacuación","incompleta"],["diarrea"],["diarrea","sangre"],
+            ["protuberancia","indolora","ingle","escroto"],["fiebre"],["ictericia"],
+            ["estreñimiento"],["pérdida","peso"],["cansancio"],["saciedad"]]
+
+wellRedactedSintomas = ["Dolor leve", "Dolor moderadamente intenso", "Dolor intenso",
             "Dolor insoportable","Retortijones","Dolor intermitente/colico",
             "Dolor punzante","Quemazón","Dolor vago","Dolor _Comer","Hambre",
             "Distensión","Náuseas","Vómitos","Malestar estomacal","Sudoración",
@@ -99,16 +108,25 @@ for i in enfermedades:
         newEnfermedades[i] = enfermedades[i]
 os.system("cls")
 
-for i in newEnfermedades:
-    print(i, newEnfermedades[i])
 
+#We ask for specific symptoms
+answer = input("Escriba los síntomas que tenga: ").lower()
+while answer != "":
+    for i in range(len(sintomas)):
+        counter = 0
+        for j in range(len(sintomas[i])):
+            if sintomas[i][j] in answer:
+                counter += 1
+        if counter == len(sintomas[i]):
+            userSymptoms[i] = 1
+    print(userSymptoms)
+    answer = input("Escriba los síntomas que tenga: ")
+    
 
-
+#Calculates the percentage of each disease
 for i in newEnfermedades:
     percentage = 0
     for j in range(len(userSymptoms)):
         if newEnfermedades[i][j] == userSymptoms[j]:
             percentage += 100/len(userSymptoms)
         percentages[i] = percentage
-
-print(percentages)
