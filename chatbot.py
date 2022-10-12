@@ -1,6 +1,7 @@
 import os
 import platform
-
+import random
+random.seed()
 #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
 if platform.system() == "Linux":
     os.system("clear")
@@ -9,7 +10,7 @@ elif platform.system() == "Windows":
  
 
 sintomas = [["dolor","leve"], ["dolor","moderadamente","intenso"], ["dolor","intenso"],
-            ["dolor","insoportable"],["retortijones"],["dolor","intermitente","colico"],
+            ["dolor","insoportable"],["retortijones"],["dolor","colico"],
             ["dolor","punzante"],["quemazón"],["dolor","vago"],["dolor","comer"],["hambre"],
             ["distensión"],["náuseas"],["vómitos"],["malestar","estomacal"],["sudoración"],
             ["taquicardia"],["sangre","orina"],["ardor","orina"],["dolor","orina"],
@@ -18,15 +19,15 @@ sintomas = [["dolor","leve"], ["dolor","moderadamente","intenso"], ["dolor","int
             ["protuberancia","indolora","ingle","escroto"],["fiebre"],["ictericia"],
             ["estreñimiento"],["pérdida","peso"],["cansancio"],["saciedad"]]
 
-wellRedactedSintomas = ["Dolor leve", "Dolor moderadamente intenso", "Dolor intenso",
-            "Dolor insoportable","Retortijones","Dolor intermitente/colico",
-            "Dolor punzante","Quemazón","Dolor vago","Dolor _Comer","Hambre",
-            "Distensión","Náuseas","Vómitos","Malestar estomacal","Sudoración",
-            "Taquicardia","Sangre-Orina","Ardor-Orina","Dolor-Orinar",
-            "Sensación imperiosa de orinar","Sagre-Heces","Dolor-Evacuación",
-            "Evacuación incompleta","Diarrea","Diarrea-Sangre",
-            "Protuberancia-Indolora-Ingle-Escroto","Fiebre,Ictericia",
-            "Estreñimiento","Pérdida de peso","Cansancio","Saciedad"]
+wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor intenso",
+            "dolor insoportable","retortijones","dolor cólico",
+            "dolor punzante","quemazón","dolor vago","dolor al comer","sensación de hambre",
+            "distensión","náuseas","vómitos","malestar estomacal","sudoración",
+            "taquicardia","sangre en la orina","ardor al orinar","dolor al orinar",
+            "sensación imperiosa de orinar","sagre en las heces","dolor en la evacuación",
+            "evacuación incompleta","diarrea","sangre en la diarrea",
+            "protuberancia indolora en la ingle y en el escroto","fiebre","ictericia",
+            "estreñimiento","pérdida de peso","cansancio","saciedad"]
 
 
 userSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -75,7 +76,7 @@ enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0
                  "Gastroenteritis9":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
                  "Hernia inguinal9":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]}
 
-# Wwlcome message
+# Welcome message
 print("Bienvenido a la consulta especializada en dolores abdominales!")
       
 # Preguntamos ubicación del dolor
@@ -110,7 +111,8 @@ os.system("cls")
 
 
 #We ask for specific symptoms
-answer = input("Escriba los síntomas que tenga: ").lower()
+randomSympton = random.choice(wellRedactedSintomas)
+answer = input(f"Escriba los síntomas que tenga\nComo por ejemplo: {randomSympton}\n").lower()
 while answer != "":
     for i in range(len(sintomas)):
         counter = 0
@@ -119,8 +121,8 @@ while answer != "":
                 counter += 1
         if counter == len(sintomas[i]):
             userSymptoms[i] = 1
-    print(userSymptoms)
-    answer = input("Escriba los síntomas que tenga: ")
+    randomSympton = random.choice(wellRedactedSintomas)
+    answer = input(f"Escriba los síntomas que tenga\nComo por ejemplo: {randomSympton}\n")
     
 
 #Calculates the percentage of each disease
