@@ -1,13 +1,19 @@
 import os
 import platform
 import random
+from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
+im = Image.open(r"C:\Users\santi\OneDrive\Escritorio\abd.jpg") # Poner el directorio donde se encuentra la imagen
 random.seed()
 #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
-if platform.system() == "Linux":
-    os.system("clear")
-elif platform.system() == "Windows":
-    os.system("cls")
- 
+
+# Function to clean the console so its more comfortable to see
+def clear():
+    if platform.system() == "Linux":
+        os.system("clear")
+    elif platform.system() == "Windows":
+        os.system("cls")
+
+clear()
 
 sintomas = [["dolor","leve"], ["dolor","moderadamente","intenso"], ["dolor","intenso"],
             ["dolor","insoportable"],["retortijones"],["dolor","colico"],
@@ -22,7 +28,7 @@ sintomas = [["dolor","leve"], ["dolor","moderadamente","intenso"], ["dolor","int
             [["diarrea","descomposición","descomposicion","descompuesto"],["sangre","sangrado"]],
             [["bulto","protuberancia"],"indolora",["ingle","escroto"]],["fiebre"],[["piel amarilla","ictericia"]],
             ["estreñimiento"],[["pérdida","perder"],"peso"],[["cansancio","cansado","fatiga","fatigado","agotado","agotamiento"]],
-            [["saciado","saciedad"]]
+            [["saciado","saciedad"]]]
 
 wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor intenso",
             "dolor insoportable","retortijones","dolor cólico",
@@ -83,9 +89,9 @@ enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0
 
 # Welcome message
 print("Bienvenido a la consulta especializada en dolores abdominales!")
-      
-# Preguntamos ubicación del dolor
 
+im.show()     
+# We ask where the pain is
 ubi = input("""Indique la zona del dolor\n
 | 1 | 2 | 3 |
 -------------
@@ -96,10 +102,11 @@ ubi = input("""Indique la zona del dolor\n
 
 ubications = []
 
+# We add to the list (ubications) the zone(s) where the patient feels pain
 while ubi != "" or len(ubications) == 0:
     if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
         ubications.append(ubi)
-    os.system("cls")
+    clear()
     ubi = input("""Si le duele en otra zona, indíquelo\n
 | 1 | 2 | 3 |
 -------------
@@ -108,16 +115,18 @@ while ubi != "" or len(ubications) == 0:
 | 7 | 8 | 9 |\n 
 """)
 
+#We create a new dict where we only save the diseases that are possible on the zone the patient feels pain
 newEnfermedades = {}
 for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
-os.system("cls")
+clear()
 
 
 #We ask for specific symptoms
 randomSympton = random.choice(wellRedactedSintomas)
 answer = input(f"Escriba los síntomas que tenga\nComo por ejemplo: {randomSympton}\n").lower()
+clear()
 while answer != "":
     for i in range(len(sintomas)):
         counter = 0
@@ -128,6 +137,7 @@ while answer != "":
             userSymptoms[i] = 1
     randomSympton = random.choice(wellRedactedSintomas)
     answer = input(f"Escriba los síntomas que tenga\nComo por ejemplo: {randomSympton}\n")
+    clear()
     
 
 #Calculates the percentage of each disease
@@ -137,3 +147,5 @@ for i in newEnfermedades:
         if newEnfermedades[i][j] == userSymptoms[j]:
             percentage += 100/len(userSymptoms)
         percentages[i] = percentage
+
+print(percentages)
