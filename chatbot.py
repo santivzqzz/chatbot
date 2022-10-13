@@ -13,7 +13,6 @@ def clear():
     elif platform.system() == "Windows":
         os.system("cls")
 
-clear()
 
 sintomas = [["dolor","leve"], ["dolor","moderadamente","intenso"], ["dolor","intenso"],
             ["dolor","insoportable"],["retortijones"],["dolor","colico"],
@@ -131,12 +130,15 @@ while answer != "":
     for i in range(len(sintomas)):
         counter = 0
         for j in range(len(sintomas[i])):
-            if sintomas[i][j] in answer:
-                counter += 1
+            for k in range(len(sintomas[i][j])):
+                if sintomas[i][j][k] in answer:
+                    counter += 1
+                    break
         if counter == len(sintomas[i]):
             userSymptoms[i] = 1
     randomSympton = random.choice(wellRedactedSintomas)
     answer = input(f"Escriba los síntomas que tenga\nComo por ejemplo: {randomSympton}\n")
+    print(userSymptoms)
     clear()
     
 
