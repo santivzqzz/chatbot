@@ -4,10 +4,10 @@ import random
 from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
 im = Image.open(r"C:\Users\santi\OneDrive\Escritorio\abd.jpg") # Poner el directorio donde se encuentra la imagen
 random.seed()
-#platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
 
 # Function to clean the console so its more comfortable to see
 def clear():
+    #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
     if platform.system() == "Linux":
         os.system("clear")
     elif platform.system() == "Windows":
