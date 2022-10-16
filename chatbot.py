@@ -91,13 +91,17 @@ print("Bienvenido a la consulta especializada en dolores abdominales!")
 
 im.show()     
 # We ask where the pain is
-ubi = input("""Indique la zona del dolor\n
+ubi = input("""Indique la zona del dolor o pulse enter para salir\n
 | 1 | 2 | 3 |
 -------------
 | 4 | 5 | 6 |
 -------------
 | 7 | 8 | 9 |\n 
 """)
+
+if ubi == "":
+    exit(0)
+
 
 ubications = []
 
@@ -106,7 +110,7 @@ while ubi != "" or len(ubications) == 0:
     if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
         ubications.append(ubi)
     clear()
-    ubi = input("""Si le duele en otra zona, indíquelo\n
+    ubi = input("""Si le duele en otra zona, indíquelo o pulse enter para salir\n
 | 1 | 2 | 3 |
 -------------
 | 4 | 5 | 6 |
@@ -124,7 +128,7 @@ clear()
 
 #We ask for specific symptoms
 randomSympton = random.choice(wellRedactedSintomas)
-answer = input(f"Escriba los síntomas que tenga\nComo por ejemplo: {randomSympton}\n").lower()
+answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSympton}\n").lower()
 clear()
 while answer != "":
     for i in range(len(sintomas)):
@@ -137,7 +141,7 @@ while answer != "":
         if counter == len(sintomas[i]):
             userSymptoms[i] = 1
     randomSympton = random.choice(wellRedactedSintomas)
-    answer = input(f"Escriba los síntomas que tenga\nComo por ejemplo: {randomSympton}\n")
+    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSympton}\n")
     print(userSymptoms)
     clear()
     
