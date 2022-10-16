@@ -127,10 +127,12 @@ clear()
 
 
 #We ask for specific symptoms
-randomSympton = random.choice(wellRedactedSintomas)
-answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSympton}\n").lower()
+
+randomSymptom = random.choice(wellRedactedSintomas)
+answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 clear()
 while answer != "":
+    symptomsAdded = []
     for i in range(len(sintomas)):
         counter = 0
         for j in range(len(sintomas[i])):
@@ -140,9 +142,12 @@ while answer != "":
                     break
         if counter == len(sintomas[i]):
             userSymptoms[i] = 1
-    randomSympton = random.choice(wellRedactedSintomas)
-    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSympton}\n")
-    print(userSymptoms)
+            symptomsAdded.append(wellRedactedSintomas[i])
+    print("Has añadido los siguientes síntomas:")
+    for i in symptomsAdded:
+        print(i.capitalize())
+    randomSymptom = random.choice(wellRedactedSintomas)
+    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n")
     clear()
     
 
