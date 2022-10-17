@@ -2,7 +2,7 @@ import os
 import platform
 import random
 from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
-im = Image.open(r"C:\Users\santi\OneDrive\Escritorio\abd.jpg") # Poner el directorio donde se encuentra la imagen
+im = Image.open(r"C:\Users\santi\Desktop\abd.jpg") # Poner el directorio donde se encuentra la imagen
 random.seed()
 
 # Function to clean the console so its more comfortable to see
@@ -14,19 +14,19 @@ def clear():
         os.system("cls")
 
 
-sintomas = [["dolor","leve"], ["dolor","moderadamente","intenso"], ["dolor","intenso"],
-            ["dolor","insoportable"],["retortijones"],["dolor","colico"],
-            ["dolor","punzante"],["quemazón"],["dolor","vago"],["dolor","comer"],["hambre"],
-            ["distensión"],["náuseas"],["vómitos"],["malestar","estomacal"],["sudoración"],
-            ["taquicardia"],["sangre","orina"],["ardor","orina"],["dolor","orina"],
+sintomas = [[["dolor"],["leve"]], [["dolor",],["moderadamente"],["intenso"]], [["dolor"],["intenso"]],
+            [["dolor"],["insoportable"]],[["retortijones"]],[["dolor"],["colico"]],
+            [["dolor"],["punzante"]],[["quemazón"]],[["dolor"],["vago"]],[["dolor"],["comer"]],[["hambre"]],
+            [["distensión"]],[["náuseas"]],[["vómitos"]],[["malestar"],["estomacal"]],[["sudoración"]],
+            [["taquicardia"]],[["sangre"],["orina"]],[["ardor"],["orina"]],[["dolor"],["orina"]],
             [["sensación","ganas","necesidad"],["imperiosa","imperiosas","constanstes"],["orinar","miccionar","mear"]],
             [["sagre","sangrado"],["heces","excremento","excrementos","oculta"]],
             [["dolor","dolores"],["evacuación","evacuar","evacuacion","excrección","excretar","excrecion","cagar"]],
             [["evacuación","evacuar","evacuacion","excrección","excretar","excrecion"],["incompleta","no completa","inacabada","no acabada"]],
             [["diarrea","descomposición","descomposicion","descompuesto"]],
             [["diarrea","descomposición","descomposicion","descompuesto"],["sangre","sangrado"]],
-            [["bulto","protuberancia"],"indolora",["ingle","escroto"]],["fiebre"],[["piel amarilla","ictericia"]],
-            ["estreñimiento"],[["pérdida","perder"],"peso"],[["cansancio","cansado","fatiga","fatigado","agotado","agotamiento"]],
+            [["bulto","protuberancia"],"indolora",["ingle","escroto"]],[["fiebre"]],[["piel amarilla","ictericia"]],
+            [["estreñimiento"]],[["pérdida","perder"],["peso"]],[["cansancio","cansado","fatiga","fatigado","agotado","agotamiento"]],
             [["saciado","saciedad"]]]
 
 wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor intenso",
@@ -130,9 +130,10 @@ clear()
 
 randomSymptom = random.choice(wellRedactedSintomas)
 answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-clear()
+
 while answer != "":
-    symptomsAdded = []
+    
+    symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
     for i in range(len(sintomas)):
         counter = 0
         for j in range(len(sintomas[i])):
@@ -146,9 +147,9 @@ while answer != "":
     print("Has añadido los siguientes síntomas:")
     for i in symptomsAdded:
         print(i.capitalize())
-    randomSymptom = random.choice(wellRedactedSintomas)
-    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n")
+    input("Pulse enter para continuar... ")
     clear()
+    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
     
 
 #Calculates the percentage of each disease
@@ -159,4 +160,5 @@ for i in newEnfermedades:
             percentage += 100/len(userSymptoms)
         percentages[i] = percentage
 
+print(userSymptoms)
 print(percentages)
