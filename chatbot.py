@@ -1,8 +1,13 @@
 import os
 import platform
 import random
+import urllib.request
 from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
-im = Image.open(r"C:\Users\santi\Desktop\abd.jpg") # Poner el directorio donde se encuentra la imagen
+urllib.request.urlretrieve(
+  'https://i0.wp.com/prevencionsaludproactiv.com/wp-content/uploads/2021/09/desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png?w=509&ssl=1',
+   "desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
+  
+img = Image.open("desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
 random.seed()
 
 # Function to clean the console so its more comfortable to see
@@ -89,7 +94,7 @@ enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0
 # Welcome message
 print("Bienvenido a la consulta especializada en dolores abdominales!")
 
-im.show()     
+img.show()     
 # We ask where the pain is
 ubi = input("""Indique la zona del dolor o pulse enter para salir\n
 | 1 | 2 | 3 |
