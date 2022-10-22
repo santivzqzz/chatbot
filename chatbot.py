@@ -1,3 +1,4 @@
+####################################### Imports #######################################
 import os
 import platform
 import random
@@ -10,6 +11,8 @@ urllib.request.urlretrieve(
 img = Image.open("desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
 random.seed()
 
+####################################### Functions #######################################
+
 # Function to clean the console so its more comfortable to see
 def clear():
     #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
@@ -18,6 +21,14 @@ def clear():
     elif platform.system() == "Windows":
         os.system("cls")
 
+# Function to show the user which symptons he can still add 
+def addableSymptons():
+    print("You can add the following symptons:")
+    for i in range(len(wellRedactedSintomas)):
+        if userSymptoms[i] == 0:
+            print(wellRedactedSintomas[i].capitalize())
+
+####################################### Variables #######################################
 
 sintomas = [[["dolor"],["leve"]], [["dolor",],["moderadamente"],["intenso"]], [["dolor"],["intenso"]],
             [["dolor"],["insoportable"]],[["retortijones"]],[["dolor"],["colico"]],
@@ -44,6 +55,7 @@ wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor inte
             "protuberancia indolora en la ingle y en el escroto","fiebre","ictericia",
             "estreñimiento","pérdida de peso","cansancio","saciedad"]
 
+ubications = []
 
 userSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 percentages = {}
@@ -91,6 +103,8 @@ enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0
                  "Gastroenteritis9":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
                  "Hernia inguinal9":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]}
 
+####################################### Main Program #######################################
+
 # Welcome message
 print("Bienvenido a la consulta especializada en dolores abdominales!")
 
@@ -106,9 +120,6 @@ ubi = input("""Indique la zona del dolor o pulse enter para salir\n
 
 if ubi == "":
     exit(0)
-
-
-ubications = []
 
 # We add to the list (ubications) the zone(s) where the patient feels pain
 while ubi != "" or len(ubications) == 0:
@@ -146,12 +157,19 @@ while answer != "":
                 if sintomas[i][j][k] in answer:
                     counter += 1
                     break
-        if counter == len(sintomas[i]):
+        if counter == len(sintomas[i]) and userSymptoms[i] == 0:
             userSymptoms[i] = 1
             symptomsAdded.append(wellRedactedSintomas[i])
-    print("Has añadido los siguientes síntomas:")
-    for i in symptomsAdded:
-        print(i.capitalize())
+
+    if len(symptomsAdded) == 0:
+        option = input("No sé detectó ningún síntoma no nombrado anteriormente\n¿Quiere ver todos los posibles síntomas para añadir? [Y] ")
+        if option in ["y","Y"]:
+            addableSymptons()
+
+    else:
+        print("Has añadido los siguientes síntomas:")
+        for i in symptomsAdded:
+            print(i.capitalize())
     input("Pulse enter para continuar... ")
     clear()
     answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
