@@ -56,7 +56,7 @@ wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor inte
             "estreñimiento","pérdida de peso","cansancio","saciedad"]
 
 ubications = []
-
+newEnfermedades = {}
 userSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 percentages = {}
 
@@ -135,7 +135,6 @@ while ubi != "" or len(ubications) == 0:
 """)
 
 #We create a new dict where we only save the diseases that are possible on the zone the patient feels pain
-newEnfermedades = {}
 for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
@@ -175,13 +174,17 @@ while answer != "":
     answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
     
 
-#Calculates the percentage of each disease
+#Calculates the percentage of each disease    
 for i in newEnfermedades:
     percentage = 0
     for j in range(len(userSymptoms)):
-        if newEnfermedades[i][j] == userSymptoms[j]:
-            percentage += 100/len(userSymptoms)
+        if newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 1:
+            percentage += 90/(newEnfermedades[i]).count(1)
+        elif newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 0:
+            percentage += 10/(newEnfermedades[i]).count(0)
         percentages[i] = percentage
 
-print(userSymptoms)
-print(percentages)
+#Shows the percentage
+print("Con los síntomas que tienes puede que tengas las siguientes emfermedades:")
+for i,j in percentages.items():
+    print(f"{i[:-1]:20}{j:4.02f}%")
