@@ -59,7 +59,7 @@ ubications = []
 newEnfermedades = {}
 userSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 percentages = {}
-
+newpercentages = {}
 enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0],
                  "Hepatitis1":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0],
                  "Pancreatitis1":[0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -139,7 +139,8 @@ for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
 clear()
-
+#We erase the dictionary because we don't need it anymore
+enfermedades.clear()
 
 #We ask for specific symptoms
 
@@ -147,7 +148,6 @@ randomSymptom = random.choice(wellRedactedSintomas)
 answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 
 while answer != "":
-    
     symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
     for i in range(len(sintomas)):
         counter = 0
@@ -172,19 +172,24 @@ while answer != "":
     input("Pulse enter para continuar... ")
     clear()
     answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-    
 
 #Calculates the percentage of each disease    
 for i in newEnfermedades:
     percentage = 0
     for j in range(len(userSymptoms)):
         if newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 1:
-            percentage += 90/(newEnfermedades[i]).count(1)
+            percentage += 85/(newEnfermedades[i]).count(1)
         elif newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 0:
             percentage += 10/(newEnfermedades[i]).count(0)
         percentages[i] = percentage
 
+#Deletes percentages lower than 20%
+for k,v in percentages.items():
+    if v > 20:
+        newpercentages[k] = v
+#We erase the dictionary because we don't need it anymore
+percentages.clear()
 #Shows the percentage
 print("Con los síntomas que tienes puede que tengas las siguientes emfermedades:")
-for i,j in percentages.items():
+for i,j in newpercentages.items():
     print(f"{i[:-1]:20}{j:4.02f}%")
