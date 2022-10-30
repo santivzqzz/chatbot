@@ -28,6 +28,22 @@ def addableSymptons():
         if userSymptoms[i] == 0:
             print(wellRedactedSintomas[i].capitalize())
 
+
+
+#Calculates the percentage of each disease    
+def calculatepercentages():
+    percentages = {}
+    for i in newEnfermedades:
+        percentage = 0
+        for j in range(len(userSymptoms)):
+            if newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 1:
+                percentage += 85/(newEnfermedades[i]).count(1)
+            elif newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 0:
+                percentage += 10/(newEnfermedades[i]).count(0)
+            percentages[i] = percentage
+    return percentages
+
+
 ####################################### Variables #######################################
 
 sintomas = [[["dolor"],["leve"]], [["dolor",],["moderadamente"],["intenso"]], [["dolor"],["intenso"]],
@@ -174,14 +190,7 @@ while answer != "":
     answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 
 #Calculates the percentage of each disease    
-for i in newEnfermedades:
-    percentage = 0
-    for j in range(len(userSymptoms)):
-        if newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 1:
-            percentage += 85/(newEnfermedades[i]).count(1)
-        elif newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 0:
-            percentage += 10/(newEnfermedades[i]).count(0)
-        percentages[i] = percentage
+percentages = calculatepercentages()
 
 #Deletes percentages lower than 20%
 for k,v in percentages.items():
@@ -189,6 +198,12 @@ for k,v in percentages.items():
         newpercentages[k] = v
 #We erase the dictionary because we don't need it anymore
 percentages.clear()
+
+# No diseases detected
+if len(newpercentages) <= 0:
+    print("Ninguna enfermedad se corresponde con los síntomas añadidos")
+
+
 #Shows the percentage
 print("Con los síntomas que tienes puede que tengas las siguientes emfermedades:")
 for i,j in newpercentages.items():
