@@ -21,28 +21,74 @@ def clear():
     elif platform.system() == "Windows":
         os.system("cls")
 
-# Function to show the user which symptons he can still add 
-def addableSymptons():
-    print("You can add the following symptons:")
-    for i in range(len(wellRedactedSintomas)):
-        if userSymptoms[i] == 0:
-            print(wellRedactedSintomas[i].capitalize())
+# Asks for specific symptoms and calculates percentages
+def addSymptons():
+    
+    # Function to show the user which symptons he can still add 
+    def addableSymptons():
+        print("You can add the following symptons:")
+        for i in range(len(wellRedactedSintomas)):
+            if userSymptoms[i] == 0:
+                print(wellRedactedSintomas[i].capitalize())
 
+    #Calculates the percentage of each disease    
+    def calculatepercentages():
+        percentages = {}
+        for i in newEnfermedades:
+            percentage = 0
+            for j in range(len(userSymptoms)):
+                if newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 1:
+                    percentage += 85/(newEnfermedades[i]).count(1)
+                elif newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 0:
+                    percentage += 10/(newEnfermedades[i]).count(0)
+                percentages[i] = percentage
+        return percentages
 
+    randomSymptom = random.choice(wellRedactedSintomas)
+    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 
-#Calculates the percentage of each disease    
-def calculatepercentages():
-    percentages = {}
-    for i in newEnfermedades:
-        percentage = 0
-        for j in range(len(userSymptoms)):
-            if newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 1:
-                percentage += 85/(newEnfermedades[i]).count(1)
-            elif newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 0:
-                percentage += 10/(newEnfermedades[i]).count(0)
-            percentages[i] = percentage
-    return percentages
+    while answer != "":
+        symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
+        for i in range(len(sintomas)):
+            counter = 0
+            for j in range(len(sintomas[i])):
+                for k in range(len(sintomas[i][j])):
+                    if sintomas[i][j][k] in answer:
+                        counter += 1
+                        break
+            if counter == len(sintomas[i]) and userSymptoms[i] == 0:
+                userSymptoms[i] = 1
+                symptomsAdded.append(wellRedactedSintomas[i])
 
+        if len(symptomsAdded) == 0:
+            option = input("No sé detectó ningún síntoma no nombrado anteriormente\n¿Quiere ver todos los posibles síntomas para añadir? [Y] ")
+            if option in ["y","Y"]:
+                addableSymptons()
+
+        else:
+            print("Has añadido los siguientes síntomas:")
+            for i in symptomsAdded:
+                print(i.capitalize())
+        input("Pulse enter para continuar... ")
+        clear()
+        answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
+
+    #Calculates the percentage of each disease
+    newpercentages = {}
+    percentages = calculatepercentages()
+
+    #Deletes percentages lower than 20%
+    for k,v in percentages.items():
+        if v > 20:
+            newpercentages[k] = v
+
+    # No diseases detected
+    if len(newpercentages) <= 0:
+        option = input("Ninguna enfermedad se corresponde con los síntomas añadidos\n\
+¿Quiere añadir más síntomas? [Y]")
+        if option in ["y","Y"]:
+                newpercentages = addSymptons()
+    return newpercentages
 
 ####################################### Variables #######################################
 
@@ -74,8 +120,6 @@ wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor inte
 ubications = []
 newEnfermedades = {}
 userSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-percentages = {}
-newpercentages = {}
 enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0],
                  "Hepatitis1":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0],
                  "Pancreatitis1":[0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -134,8 +178,6 @@ ubi = input("""Indique la zona del dolor o pulse enter para salir\n
 | 7 | 8 | 9 |\n 
 """)
 
-if ubi == "":
-    exit(0)
 
 # We add to the list (ubications) the zone(s) where the patient feels pain
 while ubi != "" or len(ubications) == 0:
@@ -155,54 +197,12 @@ for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
 clear()
+
 #We erase the dictionary because we don't need it anymore
 enfermedades.clear()
 
-#We ask for specific symptoms
-
-randomSymptom = random.choice(wellRedactedSintomas)
-answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-
-while answer != "":
-    symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
-    for i in range(len(sintomas)):
-        counter = 0
-        for j in range(len(sintomas[i])):
-            for k in range(len(sintomas[i][j])):
-                if sintomas[i][j][k] in answer:
-                    counter += 1
-                    break
-        if counter == len(sintomas[i]) and userSymptoms[i] == 0:
-            userSymptoms[i] = 1
-            symptomsAdded.append(wellRedactedSintomas[i])
-
-    if len(symptomsAdded) == 0:
-        option = input("No sé detectó ningún síntoma no nombrado anteriormente\n¿Quiere ver todos los posibles síntomas para añadir? [Y] ")
-        if option in ["y","Y"]:
-            addableSymptons()
-
-    else:
-        print("Has añadido los siguientes síntomas:")
-        for i in symptomsAdded:
-            print(i.capitalize())
-    input("Pulse enter para continuar... ")
-    clear()
-    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-
-#Calculates the percentage of each disease    
-percentages = calculatepercentages()
-
-#Deletes percentages lower than 20%
-for k,v in percentages.items():
-    if v > 20:
-        newpercentages[k] = v
-#We erase the dictionary because we don't need it anymore
-percentages.clear()
-
-# No diseases detected
-if len(newpercentages) <= 0:
-    print("Ninguna enfermedad se corresponde con los síntomas añadidos")
-
+# Main function
+newpercentages = addSymptons()
 
 #Shows the percentage
 print("Con los síntomas que tienes puede que tengas las siguientes emfermedades:")
