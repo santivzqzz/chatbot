@@ -205,6 +205,6 @@ enfermedades.clear()
 newpercentages = addSymptons()
 
 #Shows the percentage
-print("Con los síntomas que tienes puede que tengas las siguientes emfermedades:")
+print("Con los síntomas que tienes puede que tengas las siguientes enfermedades:")
 for i,j in newpercentages.items():
     print(f"{i[:-1]:20}{j:4.02f}%")
