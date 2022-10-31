@@ -23,7 +23,7 @@ def clear():
 
 # Function to show the user which symptons he can still add 
 def addableSymptons():
-    print("You can add the following symptons:")
+    print("Puedes añadir los siguientes síntomas:")
     for i in range(len(wellRedactedSintomas)):
         if userSymptoms[i] == 0:
             print(wellRedactedSintomas[i].capitalize())
