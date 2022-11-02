@@ -94,7 +94,11 @@ def addSymptons():
 
 from sintomas import sintomas 
 
-from  wellRedactedSintomas import wellRedactedSintomas
+wellRedactedSintomas = []
+with open("WellRedactedSintomas.txt","rt") as f:
+    for linea in f:
+        wellRedactedSintomas.append(linea.strip())
+
 
 ubications = []
 newEnfermedades = {}
