@@ -92,76 +92,15 @@ def addSymptons():
 
 ####################################### Variables #######################################
 
-sintomas = [[["dolor"],["leve"]], [["dolor",],["moderadamente"],["intenso"]], [["dolor"],["intenso"]],
-            [["dolor"],["insoportable"]],[["retortijones"]],[["dolor"],["colico"]],
-            [["dolor"],["punzante"]],[["quemazón"]],[["dolor"],["vago"]],[["dolor"],["comer"]],[["hambre"]],
-            [["distensión"]],[["náuseas"]],[["vómitos"]],[["malestar"],["estomacal"]],[["sudoración"]],
-            [["taquicardia"]],[["sangre"],["orina"]],[["ardor"],["orina"]],[["dolor"],["orina"]],
-            [["sensación","ganas","necesidad"],["imperiosa","imperiosas","constanstes"],["orinar","miccionar","mear"]],
-            [["sagre","sangrado"],["heces","excremento","excrementos","oculta"]],
-            [["dolor","dolores"],["evacuación","evacuar","evacuacion","excrección","excretar","excrecion","cagar"]],
-            [["evacuación","evacuar","evacuacion","excrección","excretar","excrecion"],["incompleta","no completa","inacabada","no acabada"]],
-            [["diarrea","descomposición","descomposicion","descompuesto"]],
-            [["diarrea","descomposición","descomposicion","descompuesto"],["sangre","sangrado"]],
-            [["bulto","protuberancia"],"indolora",["ingle","escroto"]],[["fiebre"]],[["piel amarilla","ictericia"]],
-            [["estreñimiento"]],[["pérdida","perder"],["peso"]],[["cansancio","cansado","fatiga","fatigado","agotado","agotamiento"]],
-            [["saciado","saciedad"]]]
+from sintomas import sintomas 
 
-wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor intenso",
-            "dolor insoportable","retortijones","dolor cólico",
-            "dolor punzante","quemazón","dolor vago","dolor al comer","sensación de hambre",
-            "distensión","náuseas","vómitos","malestar estomacal","sudoración",
-            "taquicardia","sangre en la orina","ardor al orinar","dolor al orinar",
-            "sensación imperiosa de orinar","sagre en las heces","dolor en la evacuación",
-            "evacuación incompleta","diarrea","sangre en la diarrea",
-            "protuberancia indolora en la ingle y en el escroto","fiebre","ictericia",
-            "estreñimiento","pérdida de peso","cansancio","saciedad"]
+from  wellRedactedSintomas import wellRedactedSintomas
 
 ubications = []
 newEnfermedades = {}
 userSymptoms = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0],
-                 "Hepatitis1":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0],
-                 "Pancreatitis1":[0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 "Úlcera duodenal1":[1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  "Cálculos biliares2":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 "Gastritis2":[0,0,1,0,0,1,1,1,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 "Gastrointeritis2":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
-                 "Hepatitis2":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0],
-                 "Pancreatitis2":[0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
-                 "Úcera estomacal2":[1,1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
-                 "Pancreatitis3":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  "Úcera duodenal3":[1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  "Cálculos biliares4":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 "Cálculos renales4":[0,0,0,1,0,1,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0],
-                 "Estreñimiento4":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0],
-                 "Gastrointeritis4":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
-                 "Hepatitis4":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0],
-                 "Apendicitis5":[1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  "Gastroenteritis5":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
-                  "Hernia umblical5":[0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  "Pancreatitis5":[0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
-                  "Úlcera estomacal5":[1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
-                  "Cálculos renales6":[0,0,0,1,0,1,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0],
-                 "Colitis6":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0],
-                 "Diverticulitis6":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0],
-                 "Fecaloma6":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0],
-                 "Gastroenteritis6":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
-                 "Apendicitis7":[0,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
-                 "Enfermedad Pelvica7":[0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
-                 "Estreñimiento7":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0],
-                 "Hernia inguinal7":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0],
-                 "Apendicitis8":[0,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 "Cálculos renales8":[1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0],
-                 "Diverticulitis8":[1,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0],
-                 "Enfermedad Pelvica8":[0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
-                 "Infección de orina8":[0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
-                 "Colitis9":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0],
-                 "Diverticulitis9":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0],
-                 "Enfermedad Pelvica9":[0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
-                 "Fecaloma9":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0],
-                 "Gastroenteritis9":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
-                 "Hernia inguinal9":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]}
+
+from enfermedades import enfermedades
 
 ####################################### Main Program #######################################
 
