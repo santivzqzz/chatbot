@@ -2,6 +2,7 @@
 import os
 import platform
 import random
+import csv
 import urllib.request
 from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
 urllib.request.urlretrieve(
@@ -92,7 +93,6 @@ def addSymptons():
 
 ####################################### Variables #######################################
 
-from sintomas import sintomas 
 
 wellRedactedSintomas = []
 with open("WellRedactedSintomas.txt","r") as f:
@@ -101,9 +101,13 @@ with open("WellRedactedSintomas.txt","r") as f:
         
 ubications = []
 newEnfermedades = {}
-userSymptons = [0 for x in wellRedactedSintomas]
+enfermedades = {}
+userSymptoms = [0 for x in wellRedactedSintomas]
 
-from enfermedades import enfermedades
+with open("enfermedades.csv","r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        enfermedades[row["Enfermedad"]] = row[None]
 
 ####################################### Main Program #######################################
 
