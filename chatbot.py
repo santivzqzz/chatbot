@@ -93,7 +93,6 @@ def addSymptons():
 
 ####################################### Variables #######################################
 
-
 wellRedactedSintomas = []
 with open("WellRedactedSintomas.txt","r") as f:
     for linea in f:
@@ -104,10 +103,22 @@ newEnfermedades = {}
 enfermedades = {}
 userSymptoms = [0 for x in wellRedactedSintomas]
 
-with open("enfermedades.csv","r") as f:
+with open("enfermedades2.csv","r") as f:
     reader = csv.DictReader(f)
     for row in reader:
-        enfermedades[row["Enfermedad"]] = row[None]
+        enfermedad = row["Enfermedad"]
+        row.pop("Enfermedad")
+        enfermedades[enfermedad] = list(row.values())
+
+
+print(enfermedades)
+with open("enfermedades2.csv","r") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        pass
+
+# Need to change this
+from sintomas import sintomas
 
 ####################################### Main Program #######################################
 
