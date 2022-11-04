@@ -92,30 +92,24 @@ def addSymptons():
     return newpercentages
 
 ####################################### Variables #######################################
-
-wellRedactedSintomas = []
-with open("WellRedactedSintomas.txt","r") as f:
-    for linea in f:
-        wellRedactedSintomas.append(linea.strip())
         
 ubications = []
-newEnfermedades = {}
+wellRedactedSintomas = []
 enfermedades = {}
-userSymptoms = [0 for x in wellRedactedSintomas]
+newEnfermedades = {}
 
-with open("enfermedades2.csv","r") as f:
+with open("enfermedades.csv","r") as f:
     reader = csv.DictReader(f)
+    wellRedactedSintomas = reader.fieldnames[1:]    
     for row in reader:
         enfermedad = row["Enfermedad"]
         row.pop("Enfermedad")
         enfermedades[enfermedad] = list(row.values())
 
 
+userSymptoms = [0 for x in wellRedactedSintomas]
+print(wellRedactedSintomas)
 print(enfermedades)
-with open("enfermedades2.csv","r") as f:
-    reader = csv.reader(f)
-    for row in reader:
-        pass
 
 # Need to change this
 from sintomas import sintomas
