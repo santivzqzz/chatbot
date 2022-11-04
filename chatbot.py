@@ -108,8 +108,6 @@ with open("enfermedades.csv","r") as f:
 
 
 userSymptoms = [0 for x in wellRedactedSintomas]
-print(wellRedactedSintomas)
-print(enfermedades)
 
 # Need to change this
 from sintomas import sintomas
