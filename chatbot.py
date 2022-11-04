@@ -3,6 +3,7 @@ import os
 import platform
 import random
 import csv
+import time
 import urllib.request
 from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
 urllib.request.urlretrieve(
@@ -30,6 +31,7 @@ def addSymptons():
         print("Puedes añadir los siguientes síntomas:")
         for i in range(len(wellRedactedSintomas)):
             if userSymptoms[i] == 0:
+                time.sleep(0.1)
                 print(wellRedactedSintomas[i].capitalize())
 
     #Calculates the percentage of each disease    
@@ -161,4 +163,5 @@ newpercentages = addSymptons()
 #Shows the percentage
 print("Con los síntomas que tienes puede que tengas las siguientes enfermedades:")
 for i,j in newpercentages.items():
+    time.sleep(0.1)
     print(f"{i[:-1]:20}{j:4.02f}%")
