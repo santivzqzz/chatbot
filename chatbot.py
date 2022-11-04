@@ -46,7 +46,7 @@ def addSymptons():
         return percentages
 
     randomSymptom = random.choice(wellRedactedSintomas)
-    answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
+    answer = input(f"\nEscriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 
     while answer != "":
         symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
@@ -72,11 +72,12 @@ def addSymptons():
                 print(i.capitalize())
         input("Pulse enter para continuar... ")
         clear()
-        answer = input(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-
+        randomSymptom = random.choice(wellRedactedSintomas)
+        answer = input(f"\nEscriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
     #Calculates the percentage of each disease
+
     newpercentages = {}
-    percentages = calculatepercentages()
+    percentages = calculatepercentages()    
 
     #Deletes percentages lower than 20%
     for k,v in percentages.items():
@@ -105,6 +106,10 @@ with open("enfermedades.csv","r") as f:
         enfermedad = row["Enfermedad"]
         row.pop("Enfermedad")
         enfermedades[enfermedad] = list(row.values())
+
+# This transforms all number into integers because they were strings coming from the file
+for disease in enfermedades:
+    enfermedades[disease] = [int(x) for x in enfermedades[disease]]
 
 
 userSymptoms = [0 for x in wellRedactedSintomas]
