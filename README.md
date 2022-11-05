@@ -13,7 +13,7 @@ Necesitamos 2 partes más:
   
   Calcular la enfermedad más probable
 
-Detalles opcionales si conseguimos hacer que todo lo anterior y que funcione bien y nos sobra tiempo:
+Detalles opcionales si conseguimos hacer que todo lo anterior funcione bien y nos sobra tiempo:
 
 1.- Podemos hacer un rango de edades para descartar aún más enfermedades.
 
