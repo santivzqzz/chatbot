@@ -101,7 +101,7 @@ wellRedactedSintomas = []
 enfermedades = {}
 newEnfermedades = {}
 
-with open("enfermedades.csv","r") as f:
+with open("enfermedades.csv","r", encoding='utf-8') as f:
     reader = csv.DictReader(f)
     wellRedactedSintomas = reader.fieldnames[1:]    
     for row in reader:
@@ -116,7 +116,7 @@ for disease in enfermedades:
 userSymptoms = [0 for x in wellRedactedSintomas]
 
 sintomas=[]
-with open("sintomas.csv","r") as f:
+with open("sintomas.csv","r", encoding='utf-8') as f:
     reader = csv.reader(f)
     for row in reader:
         line = []
