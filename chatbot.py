@@ -113,11 +113,19 @@ with open("enfermedades.csv","r") as f:
 for disease in enfermedades:
     enfermedades[disease] = [int(x) for x in enfermedades[disease]]
 
-
 userSymptoms = [0 for x in wellRedactedSintomas]
 
-# Need to change this
-from sintomas import sintomas
+sintomas=[]
+with open("sintomas.csv","r") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        line = []
+        for i in row:
+            if ";" in i:
+                line.append(i.split(";"))
+            else:
+                line.append([i])
+        sintomas.append(line)
 
 ####################################### Main Program #######################################
 
