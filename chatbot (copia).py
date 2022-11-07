@@ -22,12 +22,12 @@ def print2(text):
             print(char)
         else:
             print(char,end="")
-        time.sleep(random.uniform(0.1,0))
+        time.sleep(random.uniform(0.01,0))
 
 def input2(text):
     for char in text:
         print(char,end="")
-        time.sleep(random.uniform(0.1,0))
+        time.sleep(random.uniform(0.01,0))
     return input()
 
 
@@ -64,7 +64,7 @@ def addSymptons():
         return percentages
 
     randomSymptom = random.choice(wellRedactedSintomas)
-    answer = input2(f"\nEscriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
+    answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 
     while answer != "":
         symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
@@ -91,7 +91,7 @@ def addSymptons():
         input2("Pulse enter para continuar... ")
         clear()
         randomSymptom = random.choice(wellRedactedSintomas)
-        answer = input2(f"\nEscriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
+        answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
     
     # Calcula porcentajes
     newpercentages = {}
@@ -125,7 +125,7 @@ with open("enfermedades.csv","r", encoding='utf-8') as f:
         row.pop("Enfermedad")
         enfermedades[enfermedad] = list(row.values())
 
-# This transforms all number into integers because they were strings coming from the file
+# Transforma todos los numeros a entero porque se leen como str desde el archivo csv
 for disease in enfermedades:
     enfermedades[disease] = [int(x) for x in enfermedades[disease]]
 
@@ -147,10 +147,9 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
 clear()
 # Mensaje bienvenida
 print2("Bienvenido a la consulta especializada en dolores abdominales!")
-
    
 # Pregunta la zona del dolor o molestia
-print2("""Indique la zona del dolor o pulse enter para salir\n
+print("""Indique la zona del dolor o pulse enter para salir\n
 | 1 | 2 | 3 |
 -------------
 | 4 | 5 | 6 |
@@ -166,12 +165,12 @@ if ubi == "":
     clear()
     exit()
 
-# We add to the list (ubications) the zone(s) where the patient feels pain
+# Añadimos a la lista (ubications) la(s) zona(s) donde el usario indica la molestia
 while ubi != "" or len(ubications) == 0:
     if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
         ubications.append(ubi)
     clear()
-    ubi = input2("""Si le duele en otra zona, indíquelo o pulse enter para salir\n
+    ubi = input("""Si le duele en otra zona, indíquelo o pulse enter para salir\n
 | 1 | 2 | 3 |
 -------------
 | 4 | 5 | 6 |
@@ -179,19 +178,19 @@ while ubi != "" or len(ubications) == 0:
 | 7 | 8 | 9 |\n 
 """)
 
-#We create a new dict where we only save the diseases that are possible on the zone the patient feels pain
+# Crea un diccionario nuevo donde solo se almacenan las emfermedades posibles por cuadrante
 for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
 clear()
 
-#We erase the dictionary because we don't need it anymore
+# Eliminamos el diccionario porque ya no lo necesitamos
 enfermedades.clear()
 
-# Main function
+# Función principal del código
 newpercentages = addSymptons()
 
-#Shows the percentage
+# Muestra (o no) los porcentajes de cada enfermedad
 if len(newpercentages) == 0:
     print2("No ha introducido ningún dato válido...\nPrograma finalizado.")
 
@@ -208,4 +207,3 @@ else:
 
     for i,j in res_final.items():
         print2(f"{i[:-1]:20}{j:4.02f}%")
-        
