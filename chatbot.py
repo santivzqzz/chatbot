@@ -128,7 +128,7 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
         sintomas.append(line)
 
 ####################################### Main Program #######################################
-
+clear()
 # Welcome message
 print("Bienvenido a la consulta especializada en dolores abdominales!")
 
