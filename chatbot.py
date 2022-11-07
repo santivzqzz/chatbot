@@ -129,19 +129,24 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
 
 ####################################### Main Program #######################################
 clear()
-# Welcome message
-print("Bienvenido a la consulta especializada en dolores abdominales!")
-
-img.show()     
-# We ask where the pain is
-ubi = input("""Indique la zona del dolor o pulse enter para salir\n
+# Mensaje bienvenida
+print("Bienvenido a la consulta especializada en dolores abdominales!")   
+# Pregunta la zona del dolor o molestia
+print("""Indique la zona del dolor o pulse enter para salir\n
 | 1 | 2 | 3 |
 -------------
 | 4 | 5 | 6 |
 -------------
-| 7 | 8 | 9 |\n 
+| 7 | 8 | 9 | 
 """)
-
+img.show()
+ubi=input("")
+if ubi == "":
+    clear()
+    print("Programa finalizado.")
+    time.sleep(1.5)
+    clear()
+    exit()
 
 # We add to the list (ubications) the zone(s) where the patient feels pain
 while ubi != "" or len(ubications) == 0:
