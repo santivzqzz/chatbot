@@ -131,6 +131,30 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
 clear()
 # Mensaje bienvenida
 print("Bienvenido a la consulta especializada en dolores abdominales!")
+print("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar")
+time.sleep(3)
+
+
+#Simple questions about the desease
+tiempo_enf=input("Cuanto tiempo lleva padeciendo el dolor?\n")
+
+
+while tiempo_enf=="":
+   tiempo_enf=input("Tiempo no valido porfavor intoduzca el tiempo que lleva padeciendo el dolor nuevamente\n ")
+else:
+    time.sleep(1)
+evolucion=input("Han empeorado los sintomas desde hace "+tiempo_enf+"?\n")
+while evolucion=="":
+        print("Porfavor responda la pregunta con un si o un no")
+        evolucion=input("Han empeorado los sintomas desde hace "+ tiempo_enf +"?\n")
+else:
+    if evolucion=="si" or evolucion=="Si":
+        print("Si su dolor empeora rápidamente debe visitar un médico con urgencia")
+        
+    if evolucion=="no" or evolucion=="No":
+              print("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
+
+time.sleep(3)
 
    
 # Pregunta la zona del dolor o molestia
