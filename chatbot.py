@@ -15,7 +15,7 @@ random.seed()
 
 ####################################### Functions #######################################
 
-# Function to clean the console so its more comfortable to see
+# Función para limpiar la consola
 def clear():
     #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
     if platform.system() == "Linux":
@@ -23,10 +23,10 @@ def clear():
     elif platform.system() == "Windows":
         os.system("cls")
 
-# Asks for specific symptoms and calculates percentages
+# Pregunta por síntomas y calcula porcentajes
 def addSymptons():
     
-    # Function to show the user which symptons he can still add 
+    # Le enseña al usuario los síntomas que puede añadir 
     def addableSymptons():
         print("Puedes añadir los siguientes síntomas:")
         for i in range(len(wellRedactedSintomas)):
@@ -34,7 +34,7 @@ def addSymptons():
                 time.sleep(0.1)
                 print(wellRedactedSintomas[i].capitalize())
 
-    #Calculates the percentage of each disease    
+    # Calcula el porcentaje de la posible enfermedad    
     def calculatepercentages():
         percentages = {}
         for i in newEnfermedades:
@@ -76,17 +76,17 @@ def addSymptons():
         clear()
         randomSymptom = random.choice(wellRedactedSintomas)
         answer = input(f"\nEscriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-    #Calculates the percentage of each disease
-
+    
+    # Calcula porcentajes
     newpercentages = {}
     percentages = calculatepercentages()    
 
-    #Deletes percentages lower than 20%
+    # Elimina las enfermedades que estén por debajo de un 20% de posibilidades
     for k,v in percentages.items():
         if v > 20:
             newpercentages[k] = v
 
-    # No diseases detected
+    # Dar la opción de seguir preguntando si no encuentra ninguna enfermedad
     if len(newpercentages) <= 0:
         option = input("Ninguna enfermedad se corresponde con los síntomas añadidos\n\
 ¿Quiere añadir más síntomas? [Y]")
@@ -130,7 +130,9 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
 ####################################### Main Program #######################################
 clear()
 # Mensaje bienvenida
-print("Bienvenido a la consulta especializada en dolores abdominales!")   
+print("Bienvenido a la consulta especializada en dolores abdominales!")
+
+   
 # Pregunta la zona del dolor o molestia
 print("""Indique la zona del dolor o pulse enter para salir\n
 | 1 | 2 | 3 |
@@ -174,7 +176,20 @@ enfermedades.clear()
 newpercentages = addSymptons()
 
 #Shows the percentage
-print("Con los síntomas que tienes puede que tengas las siguientes enfermedades:")
-for i,j in newpercentages.items():
-    time.sleep(0.1)
-    print(f"{i[:-1]:20}{j:4.02f}%")
+if len(newpercentages) == 0:
+    print("No ha introducido ningún dato válido...\nPrograma finalizado.")
+
+else:
+    print("Con los síntomas que tienes puede que tengas las siguientes enfermedades:")
+    # Comprueba que no se repita la misma enfermedad más de una vez
+    temp=[]
+    res_final={}
+    for i in newpercentages.keys():
+        if f"{i[:-1]}" not in temp:
+            temp.append(f"{i[:-1]}")
+            res_final.update({i:newpercentages[i]})
+
+
+    for i,j in res_final.items():
+        print(f"{i[:-1]:20}{j:4.02f}%")
+        
