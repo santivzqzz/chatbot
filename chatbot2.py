@@ -68,31 +68,39 @@ def addSymptons():
 
     while answer != "":
         symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
-        for i in range(len(sintomas)):
-            counter = 0
-            for j in range(len(sintomas[i])):
-                for k in range(len(sintomas[i][j])):
-                    if sintomas[i][j][k] in answer:
-                        counter += 1
-                        break
-            if counter == len(sintomas[i]) and userSymptoms[i] == 0:
-                userSymptoms[i] = 1
-                symptomsAdded.append(wellRedactedSintomas[i])
+        for v in answer.split():
+            if v in restricted_words:
+                clear()
+                input2("Intente no hacer negaciones a la hora de introducir los síntomas.\nPulse enter para continuar...")
+                clear()
+                break
+                
+            for i in range(len(sintomas)):
+                counter = 0
+                for j in range(len(sintomas[i])):
+                    for k in range(len(sintomas[i][j])):
+                        if sintomas[i][j][k] in answer:
+                            counter += 1
+                            break
+                if counter == len(sintomas[i]) and userSymptoms[i] == 0:
+                    userSymptoms[i] = 1
+                    symptomsAdded.append(wellRedactedSintomas[i])
 
-        if len(symptomsAdded) == 0:
-            option = input2("No sé detectó ningún síntoma no nombrado anteriormente\n¿Quiere ver todos los posibles síntomas para añadir? [Y] ")
-            if option in ["y","Y"]:
-                addableSymptons()
+            if len(symptomsAdded) == 0:
+                option = input2("No sé detectó ningún síntoma no nombrado anteriormente\n¿Quiere ver todos los posibles síntomas para añadir? [Y] ")
+                if option in ["y","Y"]:
+                    addableSymptons()
 
-        else:
-            print2("Has añadido los siguientes síntomas:")
-            for i in symptomsAdded:
-                print2(i.capitalize())
-        input2("Pulse enter para continuar... ")
-        clear()
-        randomSymptom = random.choice(wellRedactedSintomas)
+            else:
+                print2("Has añadido los siguientes síntomas:")
+                for i in symptomsAdded:
+                    print2(i.capitalize())
+            input2("Pulse enter para continuar... ")
+            clear()
+            randomSymptom = random.choice(wellRedactedSintomas)
+            break
         answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-    
+            
     # Calcula porcentajes
     newpercentages = {}
     percentages = calculatepercentages()    
@@ -111,7 +119,7 @@ def addSymptons():
     return newpercentages
 
 ####################################### Variables #######################################
-        
+restricted_words=["no", "ni", "carezco", "ausencia"]       
 ubications = []
 wellRedactedSintomas = []
 enfermedades = {}
@@ -156,7 +164,7 @@ print("""Indique la zona del dolor o pulse enter para salir\n
 -------------
 | 7 | 8 | 9 | 
 """)
-img.show()
+#img.show()
 ubi=input("")
 if ubi == "":
     clear()
