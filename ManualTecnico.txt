@@ -1,2 +1,106 @@
+Librerías usadas:
 
+1.- os --> Esta libreria nos permite importar los comandos propios del sistema. 
+           En este caso lo hacemos para hacer un "clear" de la consola para que se vea más limpia la interfaz a lo largo que se ejecuta el programa
+
+2.- platform --> Al haber varios sistemas operativos, los comandos de cada uno cambian por lo que para poder llevar a cabo lo mencionado anteriormente,
+                 usamos esta librería para poder detectar en que sistema operativo se ejecuta el programa.
+
+3.- random --> En un momento del código necesitamos que el programa de al usuario síntomas de ejemplo (al azar) para introducir.
+
+4.- csv --> El código funciona gracias a listas y/o diccionarios almacenados en otros archivos en formato csv por lo que necesitamos usar esta librería para interpretarlos.
+
+5.- time --> Usamos time para controlar tiempos de espera o la rapidez que el programa va imprimiendo lo que va a decir.
+
+6.- urllib.request --> Necesitamos usar una imagen que está en internet por lo que necesitamos esta librería que la localiza.
+
+7.- PIL --> Esta librería nos permite mostrar al usuario la imagen que buscamos en internet
+
+Función principal:
+
+def addSymptons():
+
+Esta es una función que incluye a su vez varias funciones que son las que consiguen que el código funcione.
+Dentro de ella encontramos las siguientes funciones:
+    addableSymptons():
+        Esta es una función que le enseña al usuario los síntomas que puede introducir en caso de que no haya introducido uno valido anteriormente
+        Los síntomas están almacenados en un txt.
+
+    calculatepercentages():
+         Con esta función conseguimos calcular la probabilidad de que tenga una enfermedad u otra.
+         ¿Cómo sabemos esto?
+
+         Cada enfermedad tiene un "código" de unos y ceros en formato de lista (1 significa que presenta un síntoma y 0 significa que no lo presenta)
+         Gracias a esta forma de identificar cada enfermedad por código utilizamos bucles for para recorrer las listas donde están sus códigos.
+         Luego utilizamos un contador llamado "percentage" en el que vamos sumando la probabilidad dándole mucha más importancia a los unos que a los ceros.
+         Seguidamente dividimos el resultado de la variable "percentage" entre la longitud de la lista del código para obtener el resultado sobre 100.
+         Por último añadimos el resultado a un diccionario que usaremos más tarde.
+
+Luego de definir estas funciones, creamos dos variables que vamos a necesitar:
+randomSymptom --> Aqui utilizamos la librería random para elegir un sintoma al azar 
+answer --> Esta variable es un input en el que el usuario va a ir introduciendo tanto la zona del dolor como los síntomas.
+
+Ahora creamos un bucle while utilizando la variable "answer" como condición de manera que se va a repetir hasta que el usuario introduzca una cadena vacía.
+
+¿Qué sucede dentro de este while?
+
+Primero creamos una lista en el que almacena el síntoma que acaba de añadir el usuario.
+Luego hay un bucle for que comprueba que en el input no haya negaciones ya que no tienen sentido en una consulta médica y puede dar lugar a confusión al programa.
+Una vez que comprueba que no hay negaciones revisa si el síntoma añadido por el usuario está en la lista de datos que tiene el programa.
+   Si el síntoma es correcto lo tendrá en cuenta para poder seguir con el programa, de lo contrario le dice al usuario que no ha detectado ningún síntoma y le preguntará si quiere ver los posible síntomas que puede añadir.
+   Además, como aclaración, si repite el mismo síntoma más de una vez el programa no lo tendrá en cuenta ya que ya es redundante tener en cuenta dos veces el mismo síntoma.
+Por último, le enseña al usuario el síntoma que acaba de añadir.
+Este bucle se repite hasta que el usario introduce una cadena vacía en el input.
+
+Para continuar con esta función, crea un diccionario "newpercentages" donde vamos a ir almacenando los porcentajes como "value" y la enfermedad como "key".
+Seguidamente, creamos una variable "percentages" que llama a la función "calculatepercentages"
+
+Para finalizar esta gran función, cramos el bucle for que nos permite hacer lo anteriormente dicho, añadir al diccionario las enfermades con sus porbabilidades.
+   Puede pasar que el usuario introduzca una serie de síntomas pero que el programa no llegue a ninguna conclusión, es decir, no encuentra ninguna enfermedad posible.
+   Por lo tanto, comprueba si la longitud del diccionario "newpercentages" es 0, y en el caso de que eso ocurra le dice al usuario que no ha sido capaz de encontrar una enfermedad y le da la opción de seguir introduciendo síntomas.
+
+
+Variables:
+
+restricted_words --> En esta lista almacenamos algunas de las palabras restringidas con las que es posible negar una oración
+ubications --> En esta lista almacenaremos los lugares donde el usuario indique la zona donde le duele
+enfermedades --> En este diccionario almacenamos las enfermedades con sus códigos correspondientes. Todos estos datos están en un archivo csv por lo que usaremos un bucle for que nos permite añadir estos datos al diccionario.
+    Al hacer esto, todos los datos se leen como "str" algo que nos producía un error en el código ya que este para detectar las enfermedad leía números enteros.
+    Solucionamos este pequeño error con otro bucle for que transforma los unos y ceros a "int".
+
+newEnfermedades --> Es un diccionario en el que solo se almacenarán las enfermedades posibles por el/los cuadrante(s) seleccionado por el usario.
+
+sintomas --> En esta lista almacenamos los síntomas de la misma manera que con el diccionario enfermedades ya que estos están almacenados en otro archivo csv.
+
+
+Main program:
+
+* Nota: utilizamos la función clear cada vez que es necesario que la interfaz esté clara y limpia para el usuario.
+
+Empezamos el programa con varios print para dar la bienvenida al usuario y mostrarle una matriz 3x3 en la que cada casilla representa el cuadrante de dolencias del abdomen.
+Luego, le enseñamos al usuario la imagen del abdomen que seleccionamos con el comando "img.show()" usando la librería PIL mencionada al principio del manual.
+
+Utilizamos un input en el que el usario deberá indicar una a una la zona donde le duele.
+    En el caso de que el usuario introduzca una cadena vacía el programa finaliza.
+
+Posteriormente usamos un bucle while para que el usuario pueda intorducir varias zonas de dolor. No finaliza hasta que el usuario introduce una cadena vacía.
+
+Con el uso de un bucle for, añadimos las enfermedades posibles por cuadrante seleccionado al diccionario "newEnfermedades".
+   Una vez terminado el bucle eliminamos el diccionario enfermedades para ahorrar memoria porque ya no lo vamos a usar.
+
+Para continuar, declaramos una variable "newpercentages" que llama a la función principal.
+
+Para finalizar hacemos una comprobación con un if y un else:
+    En el caso de que la longitud del resultado de la función principal sea 0 (Ningún síntoma añadido), le indicamos al usuario que no ha introducido datos válidos y finaliza el programa.
+
+    De lo contrario muestra un resultado con las enfermedades posibles junto a su probabilidad.
+    ¿Cómo hemos hecho esto?
+
+    1.- Creamos una lista temporal y un diccionario en el que almacenaremos los resultados finales.
+
+    2.- Como el resultado de la función principal puede almacenar la misma enfermedad más de una vez ,ya que una enfermedad puede tener dolor en varias zonas, 
+        hemos hecho que se almacene cada enfermedad en la lista temporal para que en cada iteración compruebe si esa enfermedad ya está en la lista. Por último actualiza el diccionario con las enfermedades no repetidas.
+        Cada iteración de este bucle añade las enfermedades al diccionario res_final y como hemos dicho antes, ignora las repetidas.
+
+    3.- Ordenamos las enfermedades del nuevo diccionario "res_final" según su probabilidad de mayor a menor y le mostramos el resultado al usuario con un print.
 
