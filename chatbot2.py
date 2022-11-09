@@ -213,5 +213,8 @@ else:
             res_final.update({i:newpercentages[i]})
 
 
-    for i,j in res_final.items():
+    # Imprime las enfermedad por orden (mayor a menor) según su porcentaje
+    sorted_res_final = dict(sorted(res_final.items(), key=lambda item:item[1], reverse=True))
+    for i,j in sorted_res_final.items():
         print2(f"{i[:-1]:20}{j:4.02f}%")
+        
