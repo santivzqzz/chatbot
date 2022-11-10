@@ -15,6 +15,21 @@ random.seed()
 
 ####################################### Functions #######################################
 
+
+def print2(text):
+    for n,char in enumerate(text):
+        if n == len(text)-1:
+            print(char)
+        else:
+            print(char,end="")
+        time.sleep(random.uniform(0.01,0))
+
+def input2(text):
+    for char in text:
+        print(char,end="")
+        time.sleep(random.uniform(0.01,0))
+    return input()
+
 # Función para limpiar la consola
 def clear():
     #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
@@ -28,11 +43,11 @@ def addSymptons():
     
     # Le enseña al usuario los síntomas que puede añadir 
     def addableSymptons():
-        print("Puedes añadir los siguientes síntomas:")
+        print2("Puedes añadir los siguientes síntomas:")
         for i in range(len(wellRedactedSintomas)):
             if userSymptoms[i] == 0:
                 time.sleep(0.1)
-                print(wellRedactedSintomas[i].capitalize())
+                print2(wellRedactedSintomas[i].capitalize())
 
     # Calcula el porcentaje de la posible enfermedad    
     def calculatepercentages():
@@ -48,35 +63,43 @@ def addSymptons():
         return percentages
 
     randomSymptom = random.choice(wellRedactedSintomas)
-    answer = input(f"\nEscriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
+    answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 
     while answer != "":
         symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
-        for i in range(len(sintomas)):
-            counter = 0
-            for j in range(len(sintomas[i])):
-                for k in range(len(sintomas[i][j])):
-                    if sintomas[i][j][k] in answer:
-                        counter += 1
-                        break
-            if counter == len(sintomas[i]) and userSymptoms[i] == 0:
-                userSymptoms[i] = 1
-                symptomsAdded.append(wellRedactedSintomas[i])
+        for v in answer.split():
+            if v in restricted_words:
+                clear()
+                input2("Intente no hacer negaciones a la hora de introducir los síntomas.\nPulse enter para continuar...")
+                clear()
+                break
+                
+            for i in range(len(sintomas)):
+                counter = 0
+                for j in range(len(sintomas[i])):
+                    for k in range(len(sintomas[i][j])):
+                        if sintomas[i][j][k] in answer:
+                            counter += 1
+                            break
+                if counter == len(sintomas[i]) and userSymptoms[i] == 0:
+                    userSymptoms[i] = 1
+                    symptomsAdded.append(wellRedactedSintomas[i])
 
-        if len(symptomsAdded) == 0:
-            option = input("No sé detectó ningún síntoma no nombrado anteriormente\n¿Quiere ver todos los posibles síntomas para añadir? [Y] ")
-            if option in ["y","Y"]:
-                addableSymptons()
+            if len(symptomsAdded) == 0:
+                option = input2("No sé detectó ningún síntoma no nombrado anteriormente\n¿Quiere ver todos los posibles síntomas para añadir? [Y] ")
+                if option in ["y","Y"]:
+                    addableSymptons()
 
-        else:
-            print("Has añadido los siguientes síntomas:")
-            for i in symptomsAdded:
-                print(i.capitalize())
-        input("Pulse enter para continuar... ")
-        clear()
-        randomSymptom = random.choice(wellRedactedSintomas)
-        answer = input(f"\nEscriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
-    
+            else:
+                print2("Has añadido los siguientes síntomas:")
+                for i in symptomsAdded:
+                    print2(i.capitalize())
+            input2("Pulse enter para continuar... ")
+            clear()
+            randomSymptom = random.choice(wellRedactedSintomas)
+            break
+        answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
+            
     # Calcula porcentajes
     newpercentages = {}
     percentages = calculatepercentages()    
@@ -88,14 +111,14 @@ def addSymptons():
 
     # Dar la opción de seguir preguntando si no encuentra ninguna enfermedad
     if len(newpercentages) <= 0:
-        option = input("Ninguna enfermedad se corresponde con los síntomas añadidos\n\
+        option = input2("Ninguna enfermedad se corresponde con los síntomas añadidos\n\
 ¿Quiere añadir más síntomas? [Y]")
         if option in ["y","Y"]:
                 newpercentages = addSymptons()
     return newpercentages
 
 ####################################### Variables #######################################
-        
+restricted_words=["no", "ni", "carezco", "ausencia"]       
 ubications = []
 wellRedactedSintomas = []
 enfermedades = {}
@@ -109,7 +132,7 @@ with open("enfermedades.csv","r", encoding='utf-8') as f:
         row.pop("Enfermedad")
         enfermedades[enfermedad] = list(row.values())
 
-# This transforms all number into integers because they were strings coming from the file
+# Transforma todos los numeros a entero porque se leen como str desde el archivo csv
 for disease in enfermedades:
     enfermedades[disease] = [int(x) for x in enfermedades[disease]]
 
@@ -130,33 +153,38 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
 ####################################### Main Program #######################################
 clear()
 # Mensaje bienvenida
-print("Bienvenido a la consulta especializada en dolores abdominales!")
-print("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar")
+print2("Bienvenido a la consulta especializada en dolores abdominales!")
+print2("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar")
 time.sleep(3)
 
 
 #Simple questions about the disease
-tiempo_enf=input("Cuanto tiempo lleva padeciendo el dolor?\n")
+tiempo_enf=input2("Cuanto tiempo lleva padeciendo el dolor?\n")
 
 
 while tiempo_enf=="":
-   tiempo_enf=input("Tiempo no valido porfavor intoduzca el tiempo que lleva padeciendo el dolor nuevamente\n ")
+   tiempo_enf=input2("Tiempo no valido porfavor intoduzca el tiempo que lleva padeciendo el dolor nuevamente\n ")
 else:
     time.sleep(1)
-evolucion=input("Han empeorado los sintomas desde hace "+tiempo_enf+"?\n")
+evolucion=input2("Han empeorado los sintomas desde hace "+tiempo_enf+"?\n")
 while evolucion=="":
-        print("Porfavor responda la pregunta con un si o un no")
+        print2("Porfavor responda la pregunta con un si o un no")
         evolucion=input("Han empeorado los sintomas desde hace "+ tiempo_enf +"?\n")
 else:
     if evolucion=="si" or evolucion=="Si":
-        print("Si su dolor empeora rápidamente debe visitar un médico con urgencia")
+        print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia")
         
     if evolucion=="no" or evolucion=="No":
-              print("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
+        print2("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
 
 time.sleep(3)
 
-   
+
+
+
+
+
+
 # Pregunta la zona del dolor o molestia
 print("""Indique la zona del dolor o pulse enter para salir\n
 | 1 | 2 | 3 |
@@ -165,16 +193,16 @@ print("""Indique la zona del dolor o pulse enter para salir\n
 -------------
 | 7 | 8 | 9 | 
 """)
-img.show()
+#img.show()
 ubi=input("")
 if ubi == "":
     clear()
-    print("Programa finalizado.")
+    print2("Programa finalizado.")
     time.sleep(1.5)
     clear()
     exit()
 
-# We add to the list (ubications) the zone(s) where the patient feels pain
+# Añadimos a la lista (ubications) la(s) zona(s) donde el usario indica la molestia
 while ubi != "" or len(ubications) == 0:
     if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
         ubications.append(ubi)
@@ -187,24 +215,24 @@ while ubi != "" or len(ubications) == 0:
 | 7 | 8 | 9 |\n 
 """)
 
-#We create a new dict where we only save the diseases that are possible on the zone the patient feels pain
+# Crea un diccionario nuevo donde solo se almacenan las emfermedades posibles por cuadrante
 for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
 clear()
 
-#We erase the dictionary because we don't need it anymore
+# Eliminamos el diccionario porque ya no lo necesitamos
 enfermedades.clear()
 
-# Main function
+# Función principal del código
 newpercentages = addSymptons()
 
-#Shows the percentage
+# Muestra (o no) los porcentajes de cada enfermedad
 if len(newpercentages) == 0:
-    print("No ha introducido ningún dato válido...\nPrograma finalizado.")
+    print2("No ha introducido ningún dato válido...\nPrograma finalizado.")
 
 else:
-    print("Con los síntomas que tienes puede que tengas las siguientes enfermedades:")
+    print2("Con los síntomas que tienes puede que tengas las siguientes enfermedades:")
     # Comprueba que no se repita la misma enfermedad más de una vez
     temp=[]
     res_final={}
@@ -214,6 +242,8 @@ else:
             res_final.update({i:newpercentages[i]})
 
 
-    for i,j in res_final.items():
-        print(f"{i[:-1]:20}{j:4.02f}%")
+    # Imprime las enfermedad por orden (mayor a menor) según su porcentaje
+    sorted_res_final = dict(sorted(res_final.items(), key=lambda item:item[1], reverse=True))
+    for i,j in sorted_res_final.items():
+        print2(f"{i[:-1]:20}{j:4.02f}%")
         
