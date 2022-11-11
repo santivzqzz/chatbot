@@ -4,6 +4,8 @@ import platform
 import random
 import csv
 import time
+import matplotlib.pyplot as plt
+import numpy as np
 import urllib.request
 from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
 urllib.request.urlretrieve(
@@ -14,7 +16,6 @@ img = Image.open("desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
 random.seed()
 
 ####################################### Functions #######################################
-
 
 def print2(text):
     for n,char in enumerate(text):
@@ -155,7 +156,6 @@ clear()
 # Mensaje bienvenida
 print2("Bienvenido a la consulta especializada en dolores abdominales!")
 print2("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar")
-time.sleep(3)
 
 
 #Simple questions about the disease
@@ -164,8 +164,6 @@ tiempo_enf=input2("Cuanto tiempo lleva padeciendo el dolor?\n")
 
 while tiempo_enf=="":
    tiempo_enf=input2("Tiempo no valido porfavor intoduzca el tiempo que lleva padeciendo el dolor nuevamente\n ")
-else:
-    time.sleep(1)
 evolucion=input2("Han empeorado los sintomas desde hace "+tiempo_enf+"?\n")
 while evolucion=="":
         print2("Porfavor responda la pregunta con un si o un no")
@@ -176,13 +174,6 @@ else:
         
     if evolucion=="no" or evolucion=="No":
         print2("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
-
-time.sleep(3)
-
-
-
-
-
 
 
 # Pregunta la zona del dolor o molestia
@@ -246,9 +237,16 @@ else:
     sorted_res_final = dict(sorted(res_final.items(), key=lambda item:item[1], reverse=True))
     for i,j in sorted_res_final.items():
         print2(f"{i[:-1]:20}{j:4.02f}%")
-        
 
-
+    option = input2("¿Quiere ver una gráfica de las enfemedades? [Y] ")
+    if option in ["y","Y"]:
+        plt.rc('xtick', labelsize=(90//len(sorted_res_final)))
+        plt.title('Enfermedades', fontsize=22)
+        plt.xlabel('Enfermedades', fontsize=12)
+        plt.ylabel("Porcentages (%)", fontsize=12)
+        plt.bar([x[:-1] for x in sorted_res_final],[sorted_res_final[x] for x in sorted_res_final])
+        plt.yticks(np.arange(0,101,5))
+        plt.show()
 
 # The program end here but below we show things we weren't allowed to use
 '''
@@ -273,7 +271,3 @@ def clear():
 img.show()
 
 '''
-
-
-
-
