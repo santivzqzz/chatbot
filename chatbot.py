@@ -251,7 +251,7 @@ else:
 
 
 # The program end here but below we show things we weren't allowed to use
-
+'''
 import os
 import platform
 import urllib.request
@@ -272,7 +272,7 @@ def clear():
         os.system("cls")
 img.show()
 
-
+'''
 
 
 
