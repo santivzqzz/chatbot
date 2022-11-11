@@ -247,3 +247,33 @@ else:
     for i,j in sorted_res_final.items():
         print2(f"{i[:-1]:20}{j:4.02f}%")
         
+
+
+
+# The program end here but below we show things we weren't allowed to use
+
+import os
+import platform
+import urllib.request
+from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
+urllib.request.urlretrieve(
+  'https://i0.wp.com/prevencionsaludproactiv.com/wp-content/uploads/2021/09/desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png?w=509&ssl=1',
+   "desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
+  
+img = Image.open("desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
+
+
+# Función para limpiar la consola
+def clear():
+    #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
+    if platform.system() == "Linux":
+        os.system("clear")
+    elif platform.system() == "Windows":
+        os.system("cls")
+img.show()
+
+
+
+
+
+
