@@ -1,18 +1,9 @@
 ####################################### Imports #######################################
-import os
-import platform
 import random
 import csv
 import time
 import matplotlib.pyplot as plt
 import numpy as np
-import urllib.request
-from PIL import Image # Para que funcione el módulo PIL hay que hacer pip install pillow en la terminal o en el IDE
-urllib.request.urlretrieve(
-  'https://i0.wp.com/prevencionsaludproactiv.com/wp-content/uploads/2021/09/desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png?w=509&ssl=1',
-   "desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
-  
-img = Image.open("desktop_6637c766-e294-44ce-a7d8-21cb75a04014.png")
 random.seed()
 
 ####################################### Functions #######################################
@@ -30,14 +21,6 @@ def input2(text):
         print(char,end="")
         time.sleep(random.uniform(0.01,0))
     return input()
-
-# Función para limpiar la consola
-def clear():
-    #platform.system() This returns "Linux" "Darwin" "Java" or "Windows"
-    if platform.system() == "Linux":
-        os.system("clear")
-    elif platform.system() == "Windows":
-        os.system("cls")
 
 # Pregunta por síntomas y calcula porcentajes
 def addSymptons():
@@ -70,9 +53,7 @@ def addSymptons():
         symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
         for v in answer.split():
             if v in restricted_words:
-                clear()
                 input2("Intente no hacer negaciones a la hora de introducir los síntomas.\nPulse enter para continuar...")
-                clear()
                 break
                 
             for i in range(len(sintomas)):
@@ -96,7 +77,6 @@ def addSymptons():
                 for i in symptomsAdded:
                     print2(i.capitalize())
             input2("Pulse enter para continuar... ")
-            clear()
             randomSymptom = random.choice(wellRedactedSintomas)
             break
         answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
@@ -152,7 +132,6 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
         sintomas.append(line)
 
 ####################################### Main Program #######################################
-clear()
 # Mensaje bienvenida
 print2("Bienvenido a la consulta especializada en dolores abdominales!")
 print2("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar")
@@ -184,20 +163,17 @@ print("""Indique la zona del dolor o pulse enter para salir\n
 -------------
 | 7 | 8 | 9 | 
 """)
-#img.show()
+
 ubi=input("")
 if ubi == "":
-    clear()
     print2("Programa finalizado.")
     time.sleep(1.5)
-    clear()
     exit()
 
 # Añadimos a la lista (ubications) la(s) zona(s) donde el usario indica la molestia
 while ubi != "" or len(ubications) == 0:
     if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
         ubications.append(ubi)
-    clear()
     ubi = input("""Si le duele en otra zona, indíquelo o pulse enter para salir\n
 | 1 | 2 | 3 |
 -------------
@@ -210,7 +186,6 @@ while ubi != "" or len(ubications) == 0:
 for i in enfermedades:
     if i[-1] in ubications:
         newEnfermedades[i] = enfermedades[i]
-clear()
 
 # Eliminamos el diccionario porque ya no lo necesitamos
 enfermedades.clear()
