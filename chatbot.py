@@ -153,7 +153,23 @@ else:
         
     if evolucion=="no" or evolucion=="No":
         print2("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
-
+        
+hereditario=input2("Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEscribala , si no hay antecedentes familiares de ninguna presione enter\n")
+enfermedades2=[]
+enfermedades[:-1]=enfermedades2
+if any (substring in hereditario for substring in enfermedades2):
+    print("true")
+    print2("Vale ,pasemos al diagnostico")
+else: 
+    if hereditario=="":
+        print2("Vale ,pasemos al diagnostico")
+    else:
+        print2("Enfermedad no reconocida por nuestra base de datos")
+        while hereditario=!"":
+            herederitario=input2("Introduzca otra enfermedad o pulse enter para continuar\n")
+            if any (substring in hereditario for substring in enfermedades2):
+                print("true")
+                print2("Vale ,pasemos al diagnostico")
 
 # Pregunta la zona del dolor o molestia
 print("""Indique la zona del dolor o pulse enter para salir\n
