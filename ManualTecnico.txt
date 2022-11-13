@@ -1,16 +1,19 @@
 Librerías usadas:
 
-    3.- random --> En un momento del código necesitamos que el programa de al usuario síntomas de ejemplo (al azar) para introducir.
+    1.- random --> En un momento del código necesitamos que el programa de al usuario síntomas de ejemplo (al azar) para introducir.
 
-    4.- csv --> El código funciona gracias a listas y/o diccionarios almacenados en otros archivos en formato csv por lo que necesitamos usar esta librería para interpretarlos.
+    2.- csv --> El código funciona gracias a listas y/o diccionarios almacenados en otros archivos en formato csv por lo que necesitamos usar esta librería para interpretarlos.
 
-    5.- time --> Usamos time para controlar tiempos de espera o la rapidez que el programa va imprimiendo lo que va a decir.
+    3.- time --> Usamos time para controlar tiempos de espera o la rapidez que el programa va imprimiendo lo que va a decir.
+    
+    4.- matplotlib.pyplot --> Lo usamos para crear una gráfica que puede decidir observar el paciente con sus síntomas.
+    
+    5.- numpy --> Se usa para el eje y de la posible gráfica.
 
 Funciones:
 
     def print2() y input2():
-    
-    Enseñan por pantalla las letras una a una para simular la escritura de un humano.
+    	Enseñan por pantalla las letras una a una para simular la escritura de un humano.
 
     def addSymptons():
 
@@ -70,16 +73,87 @@ Variables:
     
     Si quiere añadir más datos de enfermedades tiene que modificar los archivos scv:
     
-    	Para añadir un nuevo síntoma tiene que modificar enfermedades.csv y sintomas.csv. En enfermedades.csv se añade el síntoma al final de la nueva línea y hay que ir añadiendo un 1 o un 0 al final de las siguientes líneas según la enfermedad que se encuentra al principio de la línea tiene el síntoma o no. En sintomas.csv se añade una nueva línea con los campos del síntoma. Se añade los campos obligatorios entre comas y los campos optativos en su interior divididos entre punto y coma.
+        Para añadir un nuevo síntoma tiene que modificar enfermedades.csv y sintomas.csv. En enfermedades.csv se añade el síntoma al final de la nueva línea y hay que ir añadiendo un 1 o un 0 al final de las siguientes líneas según la enfermedad que se encuentra al principio de la línea tiene el síntoma o no. En sintomas.csv se añade una nueva línea con los campos del síntoma. Se añade los campos obligatorios entre comas y los campos optativos en su interior divididos entre punto y coma.
+        
+    	Para añadir una nueva enfermedad tiene que modificar enfermedades.csv. En enfermedades.csv se añade el nombre de la enfemedad en una nueva línea con un número del 1 al 9 pegado al final para indentificar la zona de la enfemedad. Si la enfermedad está en múltiples zonas tiene que añadir la enfemedad varias veces con su correspondiente número. Hay que ir añadiendo un 1 o un 0 dependiendo de si en la primera línea el síntoma en la correspondiente posición se relaciona con al enfemedad o no.
     	
-	Para añadir una nueva enfermedad tiene que modificar enfermedades.csv. En enfermedades.csv se añade el nombre de la enfemedad en una nueva línea con un número del 1 al 9 pegado al final para indentificar la zona de la enfemedad. Si la enfermedad está en múltiples zonas tiene que añadir la enfemedad varias veces con su correspondiente número. Hay que ir añadiendo un 1 o un 0 dependiendo de si en la primera línea el síntoma en la correspondiente posición se relaciona con al enfemedad o no. 
+    Esto es lo que se carga de enfermedades.csv:
+    
+    	enfermedades = {"Cálculos biliares1":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0],
+                 "Hepatitis1":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0],
+                 "Pancreatitis1":[0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                 "Úlcera duodenal1":[1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  "Cálculos biliares2":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                 "Gastritis2":[0,0,1,0,0,1,1,1,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                 "Gastrointeritis2":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
+                 "Hepatitis2":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0],
+                 "Pancreatitis2":[0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
+                 "Úcera estomacal2":[1,1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+                 "Pancreatitis3":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  "Úcera duodenal3":[1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  "Cálculos biliares4":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                 "Cálculos renales4":[0,0,0,1,0,1,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0],
+                 "Estreñimiento4":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0],
+                 "Gastrointeritis4":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
+                 "Hepatitis4":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0],
+                 "Apendicitis5":[1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  "Gastroenteritis5":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
+                  "Hernia umblical5":[0,0,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  "Pancreatitis5":[0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
+                  "Úlcera estomacal5":[1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+                  "Cálculos renales6":[0,0,0,1,0,1,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0],
+                 "Colitis6":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1,0,0,0],
+                 "Diverticulitis6":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0],
+                 "Fecaloma6":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0],
+                 "Gastroenteritis6":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
+                 "Apendicitis7":[0,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
+                 "Enfermedad Pelvica7":[0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
+                 "Estreñimiento7":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0],
+                 "Hernia inguinal7":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0],
+                 "Apendicitis8":[0,1,1,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                 "Cálculos renales8":[1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0],
+                 "Diverticulitis8":[1,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0],
+                 "Enfermedad Pelvica8":[0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
+                 "Infección de orina8":[0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0],
+                 "Colitis9":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0],
+                 "Diverticulitis9":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0],
+                 "Enfermedad Pelvica9":[0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0],
+                 "Fecaloma9":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0],
+                 "Gastroenteritis9":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
+                 "Hernia inguinal9":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]}
+                 
+    Esto es lo que se carga de sintomas.csv:
+    
+	sintomas = [[["dolor"],["leve"]], [["dolor",],["moderadamente"],["intenso"]], [["dolor"],["intenso"]],
+            [["dolor"],["insoportable"]],[["retortijones"]],[["dolor"],["colico"]],
+            [["dolor"],["punzante"]],[["quemazón"]],[["dolor"],["vago"]],[["dolor"],["comer"]],[["hambre"]],
+            [["distensión"]],[["náuseas"]],[["vómitos"]],[["malestar"],["estomacal"]],[["sudoración"]],
+            [["taquicardia"]],[["sangre"],["orina"]],[["ardor"],["orina"]],[["dolor"],["orina"]],
+            [["sensación","ganas","necesidad"],["imperiosa","imperiosas","constanstes"],["orinar","miccionar","mear"]],
+            [["sagre","sangrado"],["heces","excremento","excrementos","oculta"]],
+            [["dolor","dolores"],["evacuación","evacuar","evacuacion","excrección","excretar","excrecion","cagar"]],
+            [["evacuación","evacuar","evacuacion","excrección","excretar","excrecion"],["incompleta","no completa","inacabada","no acabada"]],
+            [["diarrea","descomposición","descomposicion","descompuesto"]],
+            [["diarrea","descomposición","descomposicion","descompuesto"],["sangre","sangrado"]],
+            [["bulto","protuberancia"],["indolora"],["ingle","escroto"]],[["fiebre"]],[["piel amarilla","ictericia"]],
+            [["estreñimiento"]],[["pérdida","perder"],["peso"]],[["cansancio","cansado","fatiga","fatigado","agotado","agotamiento"]],
+            [["saciado","saciedad"]]] 
+
+	wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor intenso",
+	    "dolor insoportable","retortijones","dolor cólico",
+            "dolor punzante","quemazón","dolor vago","dolor al comer","sensación de hambre",
+            "distensión","náuseas","vómitos","malestar estomacal","sudoración",
+            "taquicardia","sangre en la orina","ardor al orinar","dolor al orinar",
+            "sensación imperiosa de orinar","sagre en las heces","dolor en la evacuación",
+            "evacuación incompleta","diarrea","sangre en la diarrea",
+            "protuberancia indolora en la ingle y en el escroto","fiebre","ictericia",
+            "estreñimiento","pérdida de peso","cansancio","saciedad"]
 
 Main program:
 
     * Nota: utilizamos la función clear cada vez que es necesario que la interfaz esté clara y limpia para el usuario.
 
     Empezamos el programa con varios print para dar la bienvenida al usuario y mostrarle una matriz 3x3 en la que cada casilla representa el cuadrante de dolencias del abdomen.
-    Luego, le enseñamos al usuario la imagen del abdomen que seleccionamos con el comando "img.show()" usando la librería PIL mencionada al principio del manual.
 
     Utilizamos un input en el que el usario deberá indicar una a una la zona donde le duele.
         En el caso de que el usuario introduzca una cadena vacía el programa finaliza.
@@ -105,19 +179,16 @@ Main program:
 
         3.- Ordenamos las enfermedades del nuevo diccionario "res_final" según su probabilidad de mayor a menor y le mostramos el resultado al usuario con un print.
 
-
-
-
-
-
 Partes no implementadas:
 
-    1.- os --> Esta libreria nos permite importar los comandos propios del sistema. 
-               En este caso lo hacemos para hacer un "clear" de la consola para que se vea más limpia la interfaz a lo largo que se ejecuta el programa
+    os --> Esta libreria nos permite importar los comandos propios del sistema. 
+                   En este caso lo hacemos para hacer un "clear" de la consola para que se vea más limpia la interfaz a lo largo que se ejecuta el programa
 
-    2.- platform --> Al haber varios sistemas operativos, los comandos de cada uno cambian por lo que para poder llevar a cabo lo mencionado anteriormente,
-                     usamos esta librería para poder detectar en que sistema operativo se ejecuta el programa.
+    platform --> Al haber varios sistemas operativos, los comandos de cada uno cambian por lo que para poder llevar a cabo lo mencionado anteriormente,
+                         usamos esta librería para poder detectar en que sistema operativo se ejecuta el programa.
 
-    6.- urllib.request --> Necesitamos usar una imagen que está en internet por lo que necesitamos esta librería que la localiza.
+    urllib.request --> Necesitamos usar una imagen que está en internet por lo que necesitamos esta librería que la localiza.
 
-    7.- PIL --> Esta librería nos permite mostrar al usuario la imagen que buscamos en internet
+     PIL --> Esta librería nos permite mostrar al usuario la imagen que buscamos en internet
+        
+    Luego, le enseñamos al usuario la imagen del abdomen que seleccionamos con el comando "img.show()" usando la librería PIL mencionada al principio del manual.
