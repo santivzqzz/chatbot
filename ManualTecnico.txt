@@ -179,6 +179,18 @@ Main program:
 
         3.- Ordenamos las enfermedades del nuevo diccionario "res_final" según su probabilidad de mayor a menor y le mostramos el resultado al usuario con un print.
 
+Pequeño árbol:
+
+Programa principal:
+	print2()
+	input2()
+	addSymptons()
+		print2()
+		input2()
+		addableSymptons()
+		calculatepercentages()
+		addSymptons()
+		
 Partes no implementadas:
 
     os --> Esta libreria nos permite importar los comandos propios del sistema. 
