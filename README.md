@@ -8,11 +8,6 @@ Para esto podemos hacer diccionarios según cuadrantes en los que incluyan las e
 
 
 
-Necesitamos 2 partes más:
-  Preguntar al usuario por sus síntomas y cambiar los zeros por unos cuando los tenga en la lista UserSymptoms
-  
-  Calcular la enfermedad más probable
-
 Detalles opcionales si conseguimos hacer que todo lo anterior funcione bien y nos sobra tiempo:
 
 1.- Podemos hacer un rango de edades para descartar aún más enfermedades.
@@ -20,5 +15,7 @@ Detalles opcionales si conseguimos hacer que todo lo anterior funcione bien y no
 2.- Podemos preguntar al paciente si tiene hábitos como beber, fumar, etc. para tener mayor certeza de que tenga cierta enfermedad u otra.
 
 3.- Hacer que el programa muestre una imagen cuando pregunte la zona del dolor con el módulo PIL (from PIL import Image)
+
+4.- Hacer que todo el programa sea un módulo y se pueda usar desde otro pograma.
 
 IMPORTANTE hacer un disclaimer al principio o al final para avisar de que el bot no acierta al 100% sino que es una guía para saber que puede ser.
