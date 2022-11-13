@@ -148,16 +148,26 @@ while evolucion=="":
         print2("Porfavor responda la pregunta con un si o un no")
         evolucion=input("Han empeorado los sintomas desde hace "+ tiempo_enf +"?\n")
 else:
-    if evolucion=="si" or evolucion=="Si":
+    if evolucion=="si" or evolucion=="Si" or evolucion=="sí" or evolucion=="Sí":
         print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia")
         
     if evolucion=="no" or evolucion=="No":
         print2("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
         
-hereditario=input2("Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEscribala , si no hay antecedentes familiares de ninguna presione enter\n")
-enfermedades2=[]
-enfermedades[:-1]=enfermedades2
-if any (substring in hereditario for substring in enfermedades2):
+hereditario=input2("Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEscríbala , si no hay antecedentes familiares de ninguna presione enter\n")
+enfermedadesHereditarias=[]
+
+while hereditario!="":
+    if any((hereditario.capitalize() == x[:-1]) for x in enfermedades) and hereditario.capitalize() not in enfermedadesHereditarias:
+        enfermedadesHereditarias.append(hereditario.capitalize())
+    else:
+        print2("Enfermedad no reconocida por nuestra base de datos")
+    hereditario=input2("Introduzca otra enfermedad o pulse enter para continuar\n")
+
+print2("Vale ,pasemos al diagnostico")
+
+exit()
+if any (hereditario in x for x in enfermedades):
     print("true")
     print2("Vale ,pasemos al diagnostico")
 else: 
@@ -165,7 +175,7 @@ else:
         print2("Vale ,pasemos al diagnostico")
     else:
         print2("Enfermedad no reconocida por nuestra base de datos")
-        while hereditario=!"":
+        while hereditario!="":
             herederitario=input2("Introduzca otra enfermedad o pulse enter para continuar\n")
             if any (substring in hereditario for substring in enfermedades2):
                 print("true")
@@ -235,7 +245,8 @@ else:
         plt.title('Enfermedades', fontsize=22)
         plt.xlabel('Enfermedades', fontsize=12)
         plt.ylabel("Porcentages (%)", fontsize=12)
-        plt.bar([x[:-1] for x in sorted_res_final],[sorted_res_final[x] for x in sorted_res_final])
+        plt.bar([x[:-1] for x in sorted_res_final],[sorted_res_final[x] for x in sorted_res_final],
+                color=[((x/max(sorted_res_final.values())),1-(x/max(sorted_res_final.values())),0,1) for x in sorted_res_final.values()])
         plt.yticks(np.arange(0,101,5))
         plt.show()
 
