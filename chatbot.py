@@ -138,15 +138,25 @@ print2("A continuación le haremos unas preguntas para hacer una evalución de l
 
 
 #Simple questions about the disease
+tiempo = []
+lista_tiempo = ["dias", "días", "meses", "mes", "año", "años", "anio", "anios", "ano","anos"]
 tiempo_enf=input2("Cuanto tiempo lleva padeciendo el dolor?\n")
+for i in tiempo_enf.split():
+    tiempo.append(i)
+
+for j in tiempo:
+    if j in lista_tiempo:
+        nuevo_tiempo = (tiempo[tiempo.index(j)-1] ,j)
+
+str_nuevo_tiempo = " ".join(nuevo_tiempo)
 
 
 while tiempo_enf=="":
    tiempo_enf=input2("Tiempo no valido porfavor intoduzca el tiempo que lleva padeciendo el dolor nuevamente\n ")
-evolucion=input2("Han empeorado los sintomas desde hace "+tiempo_enf+"?\n")
+evolucion=input2("Han empeorado los sintomas desde hace "+str_nuevo_tiempo+"?\n")
 while evolucion=="":
         print2("Porfavor responda la pregunta con un si o un no")
-        evolucion=input("Han empeorado los sintomas desde hace "+ tiempo_enf +"?\n")
+        evolucion=input("Han empeorado los sintomas desde hace "+ str_nuevo_tiempo +"?\n")
 else:
     if evolucion=="si" or evolucion=="Si" or evolucion=="sí" or evolucion=="Sí":
         print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia")
