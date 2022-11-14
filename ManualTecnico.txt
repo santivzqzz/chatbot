@@ -151,8 +151,6 @@ Variables:
 
 Main program:
 
-    * Nota: utilizamos la función clear cada vez que es necesario que la interfaz esté clara y limpia para el usuario.
-
     Empezamos el programa con varios print para dar la bienvenida al usuario y mostrarle una matriz 3x3 en la que cada casilla representa el cuadrante de dolencias del abdomen.
 
     Utilizamos un input en el que el usario deberá indicar una a una la zona donde le duele.
