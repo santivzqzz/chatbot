@@ -140,40 +140,40 @@ if __name__ == "__main__":
             
     # Mensaje bienvenida
     print2("Bienvenido a la consulta especializada en dolores abdominales!")
-    print2("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar")
+    print2("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar.")
 
     #Simple questions about the disease
     tiempo = ""
     while tiempo == "":
         listaTiempos = ["dias", "días", "meses", "mes", "año", "años", "anio", "anios", "ano","anos"]
-        tiempoIntroducido=input2("Cuanto tiempo lleva padeciendo el dolor?\n")
+        tiempoIntroducido=input2("¿Cuánto tiempo lleva padeciendo el dolor?\n")
         for i, word in enumerate(tiempoIntroducido.split()):
             if word in listaTiempos:
                 tiempo += " " + tiempoIntroducido.split()[i-1] + " " + word
         if tiempo == "":
             print2("Introduzca un tiempo válido.")
 
-    evolucion=input2("Han empeorado los sintomas desde hace"+tiempo+"?\n")
+    evolucion=input2("¿Han empeorado los síntomas desde hace"+tiempo+"?\n")
     while evolucion=="":
-            print2("Porfavor responda la pregunta con un si o un no")
-            evolucion=input("Han empeorado los sintomas desde hace"+ tiempo +"?\n")
+            print2("Porfavor, responda la pregunta con un si o un no.")
+            evolucion=input("¿Han empeorado los síntomas desde hace"+ tiempo +"?\n")
     else:
         if evolucion=="si" or evolucion=="Si" or evolucion=="sí" or evolucion=="Sí":
-            print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia")
+            print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia.")
             
         if evolucion=="no" or evolucion=="No":
-            print2("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
+            print2("Si sus síntomas son constantes y no cesan debería pedir una cita médica.")
             
-    hereditario=input2("Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEscríbala , si no hay antecedentes familiares de ninguna presione enter\n")
+    hereditario=input2("¿Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEn caso afirmativo, escríbala. De lo contrario pulse enter.\n")
 
     while hereditario!="":
         if any((hereditario.capitalize() == x[:-1]) for x in enfermedades) and hereditario.capitalize() not in enfermedadesHereditarias:
             enfermedadesHereditarias.append(hereditario.capitalize())
         else:
-            print2("Enfermedad no reconocida por nuestra base de datos")
+            print2("Enfermedad no reconocida por nuestra base de datos.")
         hereditario=input2("Introduzca otra enfermedad o pulse enter para continuar\n")
 
-    print2("Vale ,pasemos al diagnostico")
+    print2("Vale, pasemos al diagnostico")
 
     # Pregunta la zona del dolor o molestia
     print("""Indique la zona del dolor o pulse enter para salir\n
@@ -244,7 +244,7 @@ if __name__ == "__main__":
             plt.yticks(np.arange(0,101,5))
             plt.show()
 
-    # The program end here but below we show things we weren't allowed to use
+    # El programa finaliza aquí, pero abajo dejamos las cosas que no pudimos usar.
     '''
     import os
     import platform
