@@ -12,9 +12,12 @@ def print2(text):
     for n,char in enumerate(text):
         if n == len(text)-1:
             print(char)
+        elif char in ["\n"," "]:
+            print(char,end="")
+            time.sleep(random.uniform(0.1,0))
         else:
             print(char,end="")
-        time.sleep(random.uniform(0.01,0))
+            time.sleep(random.uniform(0.01,0))
 
 def input2(text):
     for char in text:
@@ -136,27 +139,21 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
 print2("Bienvenido a la consulta especializada en dolores abdominales!")
 print2("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar")
 
-
 #Simple questions about the disease
-tiempo = []
-lista_tiempo = ["dias", "días", "meses", "mes", "año", "años", "anio", "anios", "ano","anos"]
-tiempo_enf=input2("Cuanto tiempo lleva padeciendo el dolor?\n")
-for i in tiempo_enf.split():
-    tiempo.append(i)
+tiempo = ""
+while tiempo == "":
+    listaTiempos = ["dias", "días", "meses", "mes", "año", "años", "anio", "anios", "ano","anos"]
+    tiempoIntroducido=input2("Cuanto tiempo lleva padeciendo el dolor?\n")
+    for i, word in enumerate(tiempoIntroducido.split()):
+        if word in listaTiempos:
+            tiempo += " " + tiempoIntroducido.split()[i-1] + " " + word
+    if tiempo == "":
+        print2("Introduzca un tiempo válido.")
 
-for j in tiempo:
-    if j in lista_tiempo:
-        nuevo_tiempo = (tiempo[tiempo.index(j)-1] ,j)
-
-str_nuevo_tiempo = " ".join(nuevo_tiempo)
-
-
-while tiempo_enf=="":
-   tiempo_enf=input2("Tiempo no valido porfavor intoduzca el tiempo que lleva padeciendo el dolor nuevamente\n ")
-evolucion=input2("Han empeorado los sintomas desde hace "+str_nuevo_tiempo+"?\n")
+evolucion=input2("Han empeorado los sintomas desde hace"+tiempo+"?\n")
 while evolucion=="":
         print2("Porfavor responda la pregunta con un si o un no")
-        evolucion=input("Han empeorado los sintomas desde hace "+ str_nuevo_tiempo +"?\n")
+        evolucion=input("Han empeorado los sintomas desde hace"+ tiempo +"?\n")
 else:
     if evolucion=="si" or evolucion=="Si" or evolucion=="sí" or evolucion=="Sí":
         print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia")

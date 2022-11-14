@@ -6,8 +6,6 @@ de los órganos por lo que sugiero que después de preguntar el género del paci
 
 Para esto podemos hacer diccionarios según cuadrantes en los que incluyan las enfermedades con sus síntomas
 
-quoting=csv.QUOTE_NONNUMERIC
-
 Detalles opcionales si conseguimos hacer que todo lo anterior funcione bien y nos sobra tiempo:
 
 1.- Podemos hacer un rango de edades para descartar aún más enfermedades.
