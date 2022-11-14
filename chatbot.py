@@ -12,9 +12,6 @@ def print2(text):
     for n,char in enumerate(text):
         if n == len(text)-1:
             print(char)
-        elif char in ["\n"," "]:
-            print(char,end="")
-            time.sleep(random.uniform(0.1,0))
         else:
             print(char,end="")
             time.sleep(random.uniform(0.01,0))
