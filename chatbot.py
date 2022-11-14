@@ -85,10 +85,12 @@ def addSymptons():
     newpercentages = {}
     percentages = calculatepercentages()    
 
-    # Elimina las enfermedades que estén por debajo de un 20% de posibilidades
+    # Elimina las enfermedades que estén por debajo de un 20% de posibilidades y cuenta las hereditarias
     for k,v in percentages.items():
         if v > 20:
             newpercentages[k] = v
+            if k[:-1] in enfermedadesHereditarias:
+                newpercentages[k] += 5
 
     # Dar la opción de seguir preguntando si no encuentra ninguna enfermedad
     if len(newpercentages) <= 0:
@@ -104,6 +106,7 @@ ubications = []
 wellRedactedSintomas = []
 enfermedades = {}
 newEnfermedades = {}
+enfermedadesHereditarias=[]
 
 with open("enfermedades.csv","r", encoding='utf-8') as f:
     reader = csv.DictReader(f)
@@ -159,7 +162,6 @@ else:
         print2("Si sus sintomas son constantes y no cesan debería pedir una cita médica")
         
 hereditario=input2("Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEscríbala , si no hay antecedentes familiares de ninguna presione enter\n")
-enfermedadesHereditarias=[]
 
 while hereditario!="":
     if any((hereditario.capitalize() == x[:-1]) for x in enfermedades) and hereditario.capitalize() not in enfermedadesHereditarias:
