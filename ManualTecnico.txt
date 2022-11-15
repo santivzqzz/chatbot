@@ -121,7 +121,17 @@ Variables:
                  "Fecaloma9":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0],
                  "Gastroenteritis9":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
                  "Hernia inguinal9":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0]}
-                 
+
+	wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor intenso",
+	    "dolor insoportable","retortijones","dolor cólico",
+            "dolor punzante","quemazón","dolor vago","dolor al comer","sensación de hambre",
+            "distensión","náuseas","vómitos","malestar estomacal","sudoración",
+            "taquicardia","sangre en la orina","ardor al orinar","dolor al orinar",
+            "sensación imperiosa de orinar","sangre en las heces","dolor en la evacuación",
+            "evacuación incompleta","diarrea","sangre en la diarrea",
+            "protuberancia indolora en la ingle y en el escroto","fiebre","ictericia",
+            "estreñimiento","pérdida de peso","cansancio","saciedad"]
+
     Esto es lo que se carga de sintomas.csv:
     
 	sintomas = [[["dolor"],["leve"]], [["dolor",],["moderadamente"],["intenso"]], [["dolor"],["intenso"]],
@@ -139,16 +149,13 @@ Variables:
             [["estreñimiento"]],[["pérdida","perder"],["peso"]],[["cansancio","cansado","fatiga","fatigado","agotado","agotamiento"]],
             [["saciado","saciedad"]]] 
 
-	wellRedactedSintomas = ["dolor leve", "dolor moderadamente intenso", "dolor intenso",
-	    "dolor insoportable","retortijones","dolor cólico",
-            "dolor punzante","quemazón","dolor vago","dolor al comer","sensación de hambre",
-            "distensión","náuseas","vómitos","malestar estomacal","sudoración",
-            "taquicardia","sangre en la orina","ardor al orinar","dolor al orinar",
-            "sensación imperiosa de orinar","sangre en las heces","dolor en la evacuación",
-            "evacuación incompleta","diarrea","sangre en la diarrea",
-            "protuberancia indolora en la ingle y en el escroto","fiebre","ictericia",
-            "estreñimiento","pérdida de peso","cansancio","saciedad"]
-
+	Esto es lo que carga de apellidos.csv:
+	
+	apellidos=["GARCIA","RODRIGUEZ","GONZALEZ","FERNANDEZ",
+		"LOPEZ","MARTINEZ","SANCHEZ","PEREZ","GOMEZ","MARTIN",
+		"JIMENEZ","HERNANDEZ","RUIZ","DIAZ","MORENO","MUÑOZ",
+		"ALVAREZ","ROMERO","GUTIERREZ","ALONSO"]
+		
 Main program:
 
     Empezamos el programa con varios print para dar la bienvenida al usuario y mostrarle una matriz 3x3 en la que cada casilla representa el cuadrante de dolencias del abdomen.
