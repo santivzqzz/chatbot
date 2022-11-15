@@ -205,8 +205,7 @@ Partes no implementadas:
     os --> Esta libreria nos permite importar los comandos propios del sistema. 
                    En este caso lo hacemos para hacer un "clear" de la consola para que se vea más limpia la interfaz a lo largo que se ejecuta el programa
 
-    platform --> Al haber varios sistemas operativos, los comandos de cada uno cambian por lo que para poder llevar a cabo lo mencionado anteriormente,
-                         usamos esta librería para poder detectar en que sistema operativo se ejecuta el programa.
+    platform --> Al haber varios sistemas operativos, los comandos de cada uno cambian por lo que para poder llevar a cabo lo mencionado anteriormente, usamos esta librería para poder detectar en que sistema operativo se ejecuta el programa.
 
     urllib.request --> Necesitamos usar una imagen que está en internet por lo que necesitamos esta librería que la localiza.
 
