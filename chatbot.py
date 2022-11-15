@@ -181,7 +181,7 @@ if __name__ == "__main__":
     print2("Vale, pasemos al diagnostico")
 
     # Pregunta la zona del dolor o molestia 
-    print("""Indique la zona del dolor o pulse enter para salir\n
+    ubi = input("""Indique la zona del dolor o pulse enter para salir\n
           | 1 | 2 | 3 |
    Mano   -------------   Mano
           | 4 | 5 | 6 |
@@ -189,11 +189,7 @@ Derecha   -------------   Izquierda
           | 7 | 8 | 9 | 
 """)
 
-    ubi=input("")
-    if ubi == "":
-        print2("Programa finalizado.")
-        time.sleep(1.5)
-        exit()
+    
 
     # Añadimos a la lista (ubications) la(s) zona(s) donde el usario indica la molestia
     while ubi != "" or len(ubications) == 0:
@@ -251,17 +247,17 @@ Derecha   | 4 | 5 | 6 |   Izquierda
             plt.show()
 
 
-    # Mensaje final
-    apellidos = []
-    with open("apellidos.csv", "r") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            apellidos.append(row["Apellidos"])
+            # Mensaje final
+            apellidos = []
+            with open("apellidos.csv", "r") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    apellidos.append(row["Apellidos"])
 
-    print2("""El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.
-    Su número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n
-    ¡Muchas gracias por confiar en nuestro chatbot médico!"""
-    .format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 9), random.choice(apellidos)))
+            print2("""El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.
+            Su número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n
+            ¡Muchas gracias por confiar en nuestro chatbot médico!"""
+            .format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos)))
 
 
     # El programa finaliza aquí, pero abajo dejamos las cosas que no pudimos usar.
