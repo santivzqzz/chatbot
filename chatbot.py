@@ -92,8 +92,6 @@ def addSymptons():
     for k,v in percentages.items():
         if v > 20:
             newpercentages[k] = v
-            if k[:-1] in enfermedadesHereditarias:
-                newpercentages[k] += 5
 
     # Dar la opción de seguir preguntando si no encuentra ninguna enfermedad
     if len(newpercentages) <= 0:
@@ -110,7 +108,6 @@ ubications = []
 wellRedactedSintomas = []
 enfermedades = {}
 newEnfermedades = {}
-enfermedadesHereditarias=[]
 flag=False
 
 with open("enfermedades.csv","r", encoding='utf-8') as f:
@@ -170,13 +167,6 @@ if __name__ == "__main__":
             print2("Porfavor, responda la pregunta con un sí o un no.")
             evolucion=input("¿Han empeorado los síntomas desde hace"+ tiempo +"?\n")
             
-    hereditario=input2("¿Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEn caso afirmativo, escríbala. De lo contrario pulse enter.\n")
-    while hereditario!="":
-        if any((hereditario.capitalize() == x[:-1]) for x in enfermedades) and hereditario.capitalize() not in enfermedadesHereditarias:
-            enfermedadesHereditarias.append(hereditario.capitalize())
-        else:
-            print2("Enfermedad no reconocida por nuestra base de datos.")
-        hereditario=input2("Introduzca otra enfermedad o pulse enter para continuar\n")
 
     print2("Vale, pasemos al diagnostico")
 
