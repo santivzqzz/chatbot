@@ -110,6 +110,7 @@ wellRedactedSintomas = []
 enfermedades = {}
 newEnfermedades = {}
 enfermedadesHereditarias=[]
+flag=False
 
 with open("enfermedades.csv","r", encoding='utf-8') as f:
     reader = csv.DictReader(f)
@@ -157,18 +158,18 @@ if __name__ == "__main__":
             print2("Introduzca un tiempo válido.")
 
     evolucion=input2("¿Han empeorado los síntomas desde hace"+tiempo+"?\n")
-    while evolucion=="":
-            print2("Porfavor, responda la pregunta con un si o un no.")
-            evolucion=input("¿Han empeorado los síntomas desde hace"+ tiempo +"?\n")
-    else:
-        if evolucion=="si" or evolucion=="Si" or evolucion=="sí" or evolucion=="Sí":
+    while not flag:
+        if evolucion in ["si","Si","sí","Sí","si.","Si.","sí.","Sí."]:
             print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia.")
-            
-        if evolucion=="no" or evolucion=="No":
+            flag = True
+        if evolucion in ["no","No","no.","No."]:
             print2("Si sus síntomas son constantes y no cesan debería pedir una cita médica.")
+            flag = True
+        if not flag:
+            print2("Porfavor, responda la pregunta con un sí o un no.")
+            evolucion=input("¿Han empeorado los síntomas desde hace"+ tiempo +"?\n")
             
     hereditario=input2("¿Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEn caso afirmativo, escríbala. De lo contrario pulse enter.\n")
-
     while hereditario!="":
         if any((hereditario.capitalize() == x[:-1]) for x in enfermedades) and hereditario.capitalize() not in enfermedadesHereditarias:
             enfermedadesHereditarias.append(hereditario.capitalize())
