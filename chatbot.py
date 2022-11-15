@@ -178,13 +178,13 @@ if __name__ == "__main__":
 
     print2("Vale, pasemos al diagnostico")
 
-    # Pregunta la zona del dolor o molestia
+    # Pregunta la zona del dolor o molestia 
     print("""Indique la zona del dolor o pulse enter para salir\n
-| 1 | 2 | 3 |
--------------
-| 4 | 5 | 6 |
--------------
-| 7 | 8 | 9 | 
+          | 1 | 2 | 3 |
+   Mano   -------------   Mano
+          | 4 | 5 | 6 |
+Derecha   -------------   Izquierda
+          | 7 | 8 | 9 | 
 """)
 
     ubi=input("")
@@ -198,11 +198,11 @@ if __name__ == "__main__":
         if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
             ubications.append(ubi)
         ubi = input("""Si le duele en otra zona, indíquelo o pulse enter para salir\n
-| 1 | 2 | 3 |
--------------
-| 4 | 5 | 6 |
--------------
-| 7 | 8 | 9 |\n 
+          | 1 | 2 | 3 |
+          -------------
+Derecha   | 4 | 5 | 6 |   Izquierda
+          -------------
+          | 7 | 8 | 9 |\n
 """)
 
     # Crea un diccionario nuevo donde solo se almacenan las emfermedades posibles por cuadrante
