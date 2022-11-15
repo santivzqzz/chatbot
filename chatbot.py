@@ -104,7 +104,8 @@ def addSymptons():
     return newpercentages
 
 ####################################### Variables #######################################
-restricted_words=["no", "ni", "carezco", "ausencia"]       
+restricted_words=["no", "ni", "carezco", "ausencia"]
+letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]       
 ubications = []
 wellRedactedSintomas = []
 enfermedades = {}
@@ -160,10 +161,10 @@ if __name__ == "__main__":
     evolucion=input2("¿Han empeorado los síntomas desde hace"+tiempo+"?\n")
     while not flag:
         if evolucion in ["si","Si","sí","Sí","si.","Si.","sí.","Sí."]:
-            print2("Si su dolor empeora rápidamente debe visitar un médico con urgencia.")
+            print2("Si su dolor empeora rápidamente se le atenderá en urgencias.")
             flag = True
         if evolucion in ["no","No","no.","No."]:
-            print2("Si sus síntomas son constantes y no cesan debería pedir una cita médica.")
+            print2("Si sus síntomas son constantes y no cesan se le dará una cita médica para después de esta consulta.")
             flag = True
         if not flag:
             print2("Porfavor, responda la pregunta con un sí o un no.")
@@ -249,6 +250,20 @@ Derecha   | 4 | 5 | 6 |   Izquierda
             plt.yticks(np.arange(0,101,5))
             plt.show()
 
+
+    # Mensaje final
+    apellidos = []
+    with open("apellidos.csv", "r") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            apellidos.append(row["Apellidos"])
+
+    print2("""El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.
+    Su número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n
+    ¡Muchas gracias por confiar en nuestro chatbot médico!"""
+    .format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos)))
+
+
     # El programa finaliza aquí, pero abajo dejamos las cosas que no pudimos usar.
     '''
     import os
@@ -269,6 +284,8 @@ Derecha   | 4 | 5 | 6 |   Izquierda
             os.system("clear")
         elif platform.system() == "Windows":
             os.system("cls")
+    
+    # Mostrar la imagen
     img.show()
 
     '''
