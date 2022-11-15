@@ -29,8 +29,7 @@ Funciones:
 
              Cada enfermedad tiene un "código" de unos y ceros en formato de lista (1 significa que presenta un síntoma y 0 significa que no lo presenta)
              Gracias a esta forma de identificar cada enfermedad por código utilizamos bucles for para recorrer las listas donde están sus códigos.
-             Luego utilizamos un contador llamado "percentage" en el que vamos sumando la probabilidad dándole mucha más importancia a los unos que a los ceros.
-             Seguidamente dividimos el resultado de la variable "percentage" entre la longitud de la lista del código para obtener el resultado sobre 100.
+             Luego utilizamos un contador llamado "percentage" en el que vamos sumando la probabilidad dándole mucha más importancia a los unos que a los ceros y añadiendo las enfermedades hereditarias. La probabilidad sólo llega a 95%.
              Por último añadimos el resultado a un diccionario que usaremos más tarde.
 
     Luego de definir estas funciones, creamos dos variables que vamos a necesitar:
@@ -71,6 +70,8 @@ Variables:
 
     sintomas --> En esta lista almacenamos los síntomas de la misma manera que con el diccionario enfermedades ya que estos están almacenados en otro archivo csv.
     
+    apellidos --> En esta lista almacenamos apellidos que usamos para dar la cita del final del programa.
+
     Si quiere añadir más datos de enfermedades tiene que modificar los archivos scv:
     
         Para añadir un nuevo síntoma tiene que modificar enfermedades.csv y sintomas.csv. En enfermedades.csv se añade el síntoma al final de la nueva línea y hay que ir añadiendo un 1 o un 0 al final de las siguientes líneas según la enfermedad que se encuentra al principio de la línea tiene el síntoma o no. En sintomas.csv se añade una nueva línea con los campos del síntoma. Se añade los campos obligatorios entre comas y los campos optativos en su interior divididos entre punto y coma.
@@ -155,10 +156,12 @@ Variables:
 		"LOPEZ","MARTINEZ","SANCHEZ","PEREZ","GOMEZ","MARTIN",
 		"JIMENEZ","HERNANDEZ","RUIZ","DIAZ","MORENO","MUÑOZ",
 		"ALVAREZ","ROMERO","GUTIERREZ","ALONSO"]
-		
+
 Main program:
 
-    Empezamos el programa con varios print para dar la bienvenida al usuario y mostrarle una matriz 3x3 en la que cada casilla representa el cuadrante de dolencias del abdomen.
+    Empezamos el programa con varias preguntas entre las cuales le pregunta por enfermedades hereditarias, que cuenta 1% en las probabilidades. También le da la bienvenida al usuario.
+    
+    Le muestra una matriz 3x3 en la que cada casilla representa el cuadrante de dolencias del abdomen.
 
     Utilizamos un input en el que el usario deberá indicar una a una la zona donde le duele.
         En el caso de que el usuario introduzca una cadena vacía el programa finaliza.
@@ -171,7 +174,7 @@ Main program:
     Para continuar, declaramos una variable "newpercentages" que llama a la función principal.
 
     Para finalizar hacemos una comprobación con un if y un else:
-        En el caso de que la longitud del resultado de la función principal sea 0 (Ningún síntoma añadido), le indicamos al usuario que no ha introducido datos válidos y finaliza el programa.
+        En el caso de que la longitud del resultado de la función principal sea 0 (Ninguna enfemedad pasa del 20%), le indicamos al usuario que no ha introducido datos válidos y finaliza el programa.
 
         De lo contrario muestra un resultado con las enfermedades posibles junto a su probabilidad.
         ¿Cómo hemos hecho esto?
@@ -183,6 +186,8 @@ Main program:
             Cada iteración de este bucle añade las enfermedades al diccionario res_final y como hemos dicho antes, ignora las repetidas.
 
         3.- Ordenamos las enfermedades del nuevo diccionario "res_final" según su probabilidad de mayor a menor y le mostramos el resultado al usuario con un print.
+        
+    Finalmente le mostramos al paciente su futura cita que ha sido generada con los apellidos y números y letras aleatorios.
 
 Pequeño árbol:
 
