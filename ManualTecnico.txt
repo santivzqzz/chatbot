@@ -52,7 +52,7 @@ Funciones:
     Para continuar con esta función, crea un diccionario "newpercentages" donde vamos a ir almacenando los porcentajes como "value" y la enfermedad como "key".
     Seguidamente, creamos una variable "percentages" que llama a la función "calculatepercentages"
 
-    Para finalizar esta gran función, cramos el bucle for que nos permite hacer lo anteriormente dicho, añadir al diccionario las enfermades con sus porbabilidades.
+    Para finalizar esta gran función, creamos el bucle for que nos permite hacer lo anteriormente dicho, añadir al diccionario las enfermades con sus porbabilidades.
        Puede pasar que el usuario introduzca una serie de síntomas pero que el programa no llegue a ninguna conclusión, es decir, no encuentra ninguna enfermedad posible.
        Por lo tanto, comprueba si la longitud del diccionario "newpercentages" es 0, y en el caso de que eso ocurra le dice al usuario que no ha sido capaz de encontrar una enfermedad y le da la opción de seguir introduciendo síntomas.
 
