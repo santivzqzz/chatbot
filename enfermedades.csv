@@ -1,4 +1,4 @@
-Enfermedad,dolor leve,dolor moderadamente intenso,dolor intenso,dolor insoportable,retortijones,dolor cólico,dolor punzante,quemazón,dolor vago,dolor al comer,sensación de hambre,distensión,náuseas,vómitos,malestar estomacal,sudoración,taquicardia,sangre en la orina,ardor al orinar,dolor al orinar,sensación imperiosa de orinar,sagre en las heces,dolor en la evacuación,evacuación incompleta,diarrea,sangre en la diarrea,protuberancia indolora en la ingle y en el escroto,fiebre,ictericia,estreñimiento,pérdida de peso,cansancio,saciedad
+Enfermedad,dolor leve,dolor moderadamente intenso,dolor intenso,dolor insoportable,retortijones,dolor cólico,dolor punzante,quemazón,dolor vago,dolor al comer,sensación de hambre,distensión,náuseas,vómitos,malestar estomacal,sudoración,taquicardia,sangre en la orina,ardor al orinar,dolor al orinar,sensación imperiosa de orinar,sangre en las heces,dolor en la evacuación,evacuación incompleta,diarrea,sangre en la diarrea,protuberancia indolora en la ingle y en el escroto,fiebre,ictericia,estreñimiento,pérdida de peso,cansancio,saciedad
 Cálculos biliares1,0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0
 Hepatitis1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,0
 Pancreatitis1,0,0,1,0,0,0,0,0,0,0,0,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -8,13 +8,13 @@ Gastritis2,0,0,1,0,0,1,1,1,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Gastrointeritis2,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0
 Hepatitis2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0
 Pancreatitis2,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
-Úlcera estomacal2,1,1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1
+Úcera estomacal2,1,1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1
 Pancreatitis3,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-Úlcera duodenal3,1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Úcera duodenal3,1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Cálculos biliares4,0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Cálculos renales4,0,0,0,1,0,1,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0
 Estreñimiento4,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0
-Gastroenteritis4,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0
+Gastrointeritis4,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0
 Hepatitis4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0
 Apendicitis5,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Gastroenteritis5,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0
