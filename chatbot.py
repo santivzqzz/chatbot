@@ -261,7 +261,7 @@ Derecha   | 4 | 5 | 6 |   Izquierda
     print2("""El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.
     Su número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n
     ¡Muchas gracias por confiar en nuestro chatbot médico!"""
-    .format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos)))
+    .format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 9), random.choice(apellidos)))
 
 
     # El programa finaliza aquí, pero abajo dejamos las cosas que no pudimos usar.
