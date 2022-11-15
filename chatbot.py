@@ -148,7 +148,7 @@ if __name__ == "__main__":
     #Simple questions about the disease
     tiempo = ""
     while tiempo == "":
-        listaTiempos = ["dias", "días", "meses", "mes", "año", "años", "anio", "anios", "ano","anos"]
+        listaTiempos = ["día", "dia", "dias", "días", "meses", "mes", "año", "años", "anio", "anios", "ano","anos"]
         tiempoIntroducido=input2("¿Cuánto tiempo lleva padeciendo el dolor?\n")
         for i, word in enumerate(tiempoIntroducido.split()):
             if word in listaTiempos:
@@ -204,7 +204,8 @@ Derecha   | 4 | 5 | 6 |   Izquierda
           -------------
           | 7 | 8 | 9 |\n
 """)
-
+        if len(ubications) == 8:
+            break
     # Crea un diccionario nuevo donde solo se almacenan las emfermedades posibles por cuadrante
     for i in enfermedades:
         if i[-1] in ubications:
