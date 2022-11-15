@@ -14,12 +14,12 @@ def print2(text):
             print(char)
         else:
             print(char,end="")
-            time.sleep(random.uniform(0.01,0))
+            time.sleep(random.uniform(0.05,0))
 
 def input2(text):
     for char in text:
         print(char,end="")
-        time.sleep(random.uniform(0.01,0))
+        time.sleep(random.uniform(0.05,0))
     return input()
 
 # Pregunta por síntomas y calcula porcentajes
@@ -251,10 +251,8 @@ Derecha   | 4 | 5 | 6 |   Izquierda
                     color=[((x/max(sorted_res_final.values())),1-(x/max(sorted_res_final.values())),0,1) for x in sorted_res_final.values()])
             plt.yticks(np.arange(0,101,5))
             plt.show()
-            print2("El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.\nSu número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n¡Muchas gracias por confiar en nuestro chatbot médico!".format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos).capitalize()))
-        else:
-            # Mensaje final
-            print2("El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.\nSu número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n¡Muchas gracias por confiar en nuestro chatbot médico!".format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos).capitalize()))
+        # Mensaje final
+        print2("El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.\nSu número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n¡Muchas gracias por confiar en nuestro chatbot médico!".format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos).capitalize()))
     # El programa finaliza aquí, pero abajo dejamos las cosas que no pudimos usar.
     '''
     import os
