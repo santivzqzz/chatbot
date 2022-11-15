@@ -145,7 +145,7 @@ if __name__ == "__main__":
     print2("Bienvenido a la consulta especializada en dolores abdominales!")
     print2("A continuación le haremos unas preguntas para hacer una evalución de las posibles enfermedades que podría presentar.")
 
-    #Simple questions about the disease
+    # Preguntas simples de la consulta
     tiempo = ""
     while tiempo == "":
         listaTiempos = ["día", "dia", "dias", "días", "meses", "mes", "año", "años", "anio", "anios", "ano","anos"]
