@@ -140,7 +140,7 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
         sintomas.append(line)
 
 apellidos = []
-with open("apellidos.csv", "r") as f:
+with open("apellidos.csv", "r", encoding='utf-8') as f:
     reader = csv.DictReader(f)
     for row in reader:
         apellidos.append(row["Apellidos"])
@@ -253,11 +253,7 @@ Derecha   | 4 | 5 | 6 |   Izquierda
             plt.show()
 
             # Mensaje final
-            print2("""El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.
-            Su número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n
-            ¡Muchas gracias por confiar en nuestro chatbot médico!"""
-            .format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos)))
-
+            print2("El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.\nSu número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n¡Muchas gracias por confiar en nuestro chatbot médico!".format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos).capitalize()))
     # El programa finaliza aquí, pero abajo dejamos las cosas que no pudimos usar.
     '''
     import os
