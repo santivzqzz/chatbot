@@ -56,7 +56,6 @@ Funciones:
        Puede pasar que el usuario introduzca una serie de síntomas pero que el programa no llegue a ninguna conclusión, es decir, no encuentra ninguna enfermedad posible.
        Por lo tanto, comprueba si la longitud del diccionario "newpercentages" es 0, y en el caso de que eso ocurra le dice al usuario que no ha sido capaz de encontrar una enfermedad y le da la opción de seguir introduciendo síntomas.
 
-
 Variables:
 
     restricted_words --> En esta lista almacenamos algunas de las palabras restringidas con las que es posible negar una oración
@@ -180,11 +179,12 @@ Main program:
 
         1.- Creamos una lista temporal y un diccionario en el que almacenaremos los resultados finales.
 
-        2.- Como el resultado de la función principal puede almacenar la misma enfermedad más de una vez ,ya que una enfermedad puede tener dolor en varias zonas, 
-            hemos hecho que se almacene cada enfermedad en la lista temporal para que en cada iteración compruebe si esa enfermedad ya está en la lista. Por último actualiza el diccionario con las enfermedades no repetidas.
+        2.- Como el resultado de la función principal puede almacenar la misma enfermedad más de una vez, ya que una enfermedad puede tener dolor en varias zonas, hemos hecho que se almacene cada enfermedad en la lista temporal para que en cada iteración compruebe si esa enfermedad ya está en la lista. Por último actualiza el diccionario con las enfermedades no repetidas.
             Cada iteración de este bucle añade las enfermedades al diccionario res_final y como hemos dicho antes, ignora las repetidas.
 
         3.- Ordenamos las enfermedades del nuevo diccionario "res_final" según su probabilidad de mayor a menor y le mostramos el resultado al usuario con un print.
+        
+    Le dejamos al paciente ver una gráfica con los porcentages.
         
     Finalmente le mostramos al paciente su futura cita que ha sido generada con los apellidos y números y letras aleatorios.
 
