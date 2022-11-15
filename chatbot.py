@@ -105,7 +105,7 @@ def addSymptons():
 
 ####################################### Variables #######################################
 restricted_words=["no", "ni", "carezco", "ausencia"]
-letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]       
+letras = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]       
 ubications = []
 wellRedactedSintomas = []
 enfermedades = {}
