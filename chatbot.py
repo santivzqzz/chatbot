@@ -49,7 +49,7 @@ def addSymptons():
     randomSymptom = random.choice(wellRedactedSintomas)
     answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
 
-    while answer != "":
+    while answer != "" and any(x == 0 for x in userSymptoms):
         symptomsAdded = [] #Lista para avisar al usuario el sintoma que ha introducido
         for v in answer.split():
             if v in restricted_words:
@@ -79,7 +79,10 @@ def addSymptons():
             input2("Pulse enter para continuar... ")
             randomSymptom = random.choice(wellRedactedSintomas)
             break
-        answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
+        if all(x == 1 for x in userSymptoms):
+            print2("Ya ha introducido todos los síntomas que están en la base de datos")
+        else:
+            answer = input2(f"Escriba los síntomas que tenga o pulse enter para salir\nComo por ejemplo: {randomSymptom}\n").lower()
             
     # Calcula porcentajes
     newpercentages = {}
@@ -235,7 +238,7 @@ if __name__ == "__main__":
 
         option = input2("¿Quiere ver una gráfica de las enfemedades? [Y] ")
         if option in ["y","Y"]:
-            plt.rc('xtick', labelsize=(45//len(sorted_res_final)))
+            plt.rc('xtick', labelsize=(90//len(sorted_res_final)))
             plt.title('Enfermedades', fontsize=22)
             plt.xlabel('Enfermedades', fontsize=12)
             plt.ylabel("Porcentages (%)", fontsize=12)
