@@ -92,6 +92,8 @@ def addSymptons():
     for k,v in percentages.items():
         if v > 20:
             newpercentages[k] = v
+            if k[:-1] in enfermedadesHereditarias:
+                newpercentages[k] += 5
 
     # Dar la opción de seguir preguntando si no encuentra ninguna enfermedad
     if len(newpercentages) <= 0:
@@ -108,6 +110,7 @@ ubications = []
 wellRedactedSintomas = []
 enfermedades = {}
 newEnfermedades = {}
+enfermedadesHereditarias=[]
 flag=False
 
 with open("enfermedades.csv","r", encoding='utf-8') as f:
@@ -135,6 +138,12 @@ with open("sintomas.csv","r", encoding='utf-8') as f:
             else:
                 line.append([i])
         sintomas.append(line)
+
+apellidos = []
+with open("apellidos.csv", "r") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        apellidos.append(row["Apellidos"])
 
 ####################################### Main Program #######################################
 
@@ -166,8 +175,15 @@ if __name__ == "__main__":
         if not flag:
             print2("Porfavor, responda la pregunta con un sí o un no.")
             evolucion=input("¿Han empeorado los síntomas desde hace"+ tiempo +"?\n")
-            
 
+    hereditario=input2("¿Algún familiar suyo ha sido diagnosticado con alguna  enfermedad abdominal?\nEn caso afirmativo, escríbala. De lo contrario pulse enter.\n")
+    while hereditario!="":
+        if any((hereditario.capitalize() == x[:-1]) for x in enfermedades) and hereditario.capitalize() not in enfermedadesHereditarias:
+            enfermedadesHereditarias.append(hereditario.capitalize())
+        else:
+            print2("Enfermedad no reconocida por nuestra base de datos.")
+        hereditario=input2("Introduzca otra enfermedad o pulse enter para continuar\n")
+    
     print2("Vale, pasemos al diagnostico")
 
     # Pregunta la zona del dolor o molestia 
@@ -236,19 +252,11 @@ Derecha   | 4 | 5 | 6 |   Izquierda
             plt.yticks(np.arange(0,101,5))
             plt.show()
 
-
             # Mensaje final
-            apellidos = []
-            with open("apellidos.csv", "r") as f:
-                reader = csv.DictReader(f)
-                for row in reader:
-                    apellidos.append(row["Apellidos"])
-
             print2("""El chatbot ha finalizado, dirígase a la sala {} en la que se le harán las pruebas necesarias para confirmar las posibles patologías.
             Su número de cita es {}{}{}, espere a que salga en la pantalla de la sala de espera y será atendido por el médico {}.\n
             ¡Muchas gracias por confiar en nuestro chatbot médico!"""
             .format(random.randint(1, 10),random.choice(letras),random.choice(letras),random.randint(1, 10), random.choice(apellidos)))
-
 
     # El programa finaliza aquí, pero abajo dejamos las cosas que no pudimos usar.
     '''
