@@ -198,6 +198,8 @@ Derecha   -------------   Izquierda
     while ubi != "" or len(ubications) == 0:
         if ubi.isnumeric() and (ubi not in ubications) and (1 <= int(ubi) <= 9):
             ubications.append(ubi)
+        if len(ubications) == 9:
+            break
         ubi = input("""Si le duele en otra zona, indíquelo o pulse enter para salir\n
           | 1 | 2 | 3 |
           -------------
@@ -205,8 +207,6 @@ Derecha   | 4 | 5 | 6 |   Izquierda
           -------------
           | 7 | 8 | 9 |\n
 """)
-        if len(ubications) == 8:
-            break
     # Crea un diccionario nuevo donde solo se almacenan las emfermedades posibles por cuadrante
     for i in enfermedades:
         if i[-1] in ubications:
