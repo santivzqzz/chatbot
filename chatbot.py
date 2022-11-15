@@ -40,7 +40,7 @@ def addSymptons():
             percentage = 0
             for j in range(len(userSymptoms)):
                 if newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 1:
-                    percentage += 85/(newEnfermedades[i]).count(1)
+                    percentage += 89/(newEnfermedades[i]).count(1)
                 elif newEnfermedades[i][j] == userSymptoms[j] and userSymptoms[j] == 0:
                     percentage += 5/(newEnfermedades[i]).count(0)
                 percentages[i] = percentage
@@ -93,7 +93,7 @@ def addSymptons():
         if v > 20:
             newpercentages[k] = v
             if k[:-1] in enfermedadesHereditarias:
-                newpercentages[k] += 5
+                newpercentages[k] += 1
 
     # Dar la opción de seguir preguntando si no encuentra ninguna enfermedad
     if len(newpercentages) <= 0:
