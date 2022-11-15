@@ -38,9 +38,9 @@ Funciones:
 
     ¿Qué sucede dentro de este while?
     
-        El programa recoge lo que introduce el ususario y si hay alguna partícula de negación lo descarta para que no entienda "No tengo dolor leve" como que tiene dolor leve.
+        El programa recoge lo que introduce el usuario y si hay alguna partícula de negación lo descarta para que no entienda "No tengo dolor leve" como que tiene dolor leve.
         
-        Después revisa lo que escribe el ususario y lo compara con la lista síntomas. Para que indentifique que el cliente haya introducido un síntoma debe tener en su texto todas la partes obligatorias del síntoma. Cada síntoma está constituido de al menos 1 parte obligatoria. Dentro de la parte obligatoria hay varias optativas. Con que detecte una parte optativa cuenta la parte obligatoria como cumplida. Si todas las partes obligatorias se cumplen pone en la ficha del paciente que tiene ese síntoma.
+        Después revisa lo que escribe el usuario y lo compara con la lista síntomas. Para que indentifique que el cliente haya introducido un síntoma debe tener en su texto todas la partes obligatorias del síntoma. Cada síntoma está constituido de al menos 1 parte obligatoria. Dentro de la parte obligatoria hay varias optativas. Con que detecte una parte optativa cuenta la parte obligatoria como cumplida. Si todas las partes obligatorias se cumplen pone en la ficha del paciente que tiene ese síntoma.
         
         Al paciente le enseña todos los síntomas que acaba de introducir que no había añadido con anterioridad.
         
@@ -69,7 +69,7 @@ Variables:
     
     apellidos --> En esta lista almacenamos apellidos que usamos para dar la cita del final del programa.
 
-    Si quiere añadir más datos de enfermedades tiene que modificar los archivos scv:
+    Si quiere añadir más datos de enfermedades tiene que modificar los archivos csv:
     
         Para añadir un nuevo síntoma tiene que modificar enfermedades.csv y sintomas.csv. En enfermedades.csv se añade el síntoma al final de la nueva línea y hay que ir añadiendo un 1 o un 0 al final de las siguientes líneas según la enfermedad que se encuentra al principio de la línea tiene el síntoma o no. En sintomas.csv se añade una nueva línea con los campos del síntoma. Se añade los campos obligatorios entre comas y los campos optativos en su interior divididos entre punto y coma.
         
@@ -83,16 +83,16 @@ Variables:
                  "Úlcera duodenal1":[1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                   "Cálculos biliares2":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                  "Gastritis2":[0,0,1,0,0,1,1,1,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 "Gastrointeritis2":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
+                 "Gastroenteritis2":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
                  "Hepatitis2":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0],
                  "Pancreatitis2":[0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],
-                 "Úcera estomacal2":[1,1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
+                 "Úlcera estomacal2":[1,1,0,0,0,0,0,1,0,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1],
                  "Pancreatitis3":[0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                  "Úcera duodenal3":[1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                  "Úlcera duodenal3":[1,1,0,0,0,0,1,1,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                   "Cálculos biliares4":[0,0,1,1,0,1,1,0,0,1,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                  "Cálculos renales4":[0,0,0,1,0,1,0,0,0,0,0,0,1,1,0,1,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0],
                  "Estreñimiento4":[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0],
-                 "Gastrointeritis4":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
+                 "Gastroenteritis4":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
                  "Hepatitis4":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,1,1,0],
                  "Apendicitis5":[1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                   "Gastroenteritis5":[0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0],
@@ -161,9 +161,8 @@ Main program:
     Le muestra una matriz 3x3 en la que cada casilla representa el cuadrante de dolencias del abdomen.
 
     Utilizamos un input en el que el usario deberá indicar una a una la zona donde le duele.
-        En el caso de que el usuario introduzca una cadena vacía el programa finaliza.
 
-    Posteriormente usamos un bucle while para que el usuario pueda intorducir varias zonas de dolor. No finaliza hasta que el usuario introduce una cadena vacía.
+    Posteriormente usamos un bucle while para que el usuario pueda introducir varias zonas de dolor. No finaliza hasta que el usuario introduce una cadena vacía.
 
     Con el uso de un bucle for, añadimos las enfermedades posibles por cuadrante seleccionado al diccionario "newEnfermedades".
        Una vez terminado el bucle eliminamos el diccionario enfermedades para ahorrar memoria porque ya no lo vamos a usar.
@@ -183,7 +182,7 @@ Main program:
 
         3.- Ordenamos las enfermedades del nuevo diccionario "res_final" según su probabilidad de mayor a menor y le mostramos el resultado al usuario con un print.
         
-    Le dejamos al paciente ver una gráfica con los porcentages.
+    Le dejamos al paciente ver una gráfica con los porcentajes.
         
     Finalmente le mostramos al paciente su futura cita que ha sido generada con los apellidos y números y letras aleatorios.
 
@@ -209,5 +208,3 @@ Partes no implementadas:
     urllib.request --> Necesitamos usar una imagen que está en internet por lo que necesitamos esta librería que la localiza.
 
      PIL --> Esta librería nos permite mostrar al usuario la imagen que buscamos en internet
-        
-    Luego, le enseñamos al usuario la imagen del abdomen que seleccionamos con el comando "img.show()" usando la librería PIL mencionada al principio del manual.
