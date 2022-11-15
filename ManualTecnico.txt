@@ -19,8 +19,7 @@ Funciones:
     Esta es una función que incluye a su vez varias funciones que son las que consiguen que el código funcione.
     Dentro de ella encontramos las siguientes funciones:
         addableSymptons():
-            Esta es una función que le enseña al usuario los síntomas que puede introducir en caso de que no haya introducido uno valido anteriormente
-            Los síntomas están almacenados en un txt.
+            Esta es una función que le enseña al usuario los síntomas que puede introducir en caso de que no haya introducido uno valido anteriormente. Los síntomas están almacenados en un txt.
 
         calculatepercentages():
              Con esta función conseguimos calcular la probabilidad de que tenga una enfermedad u otra.
